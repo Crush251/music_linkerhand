@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎹 钢琴演奏控制系统</title>
+   <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎹 钢琴演奏控制系统</h1>
+        <h2>🤖 机械臂控制</h2>
+        <div class="status-bar" id="statusBar">
+            系统状态: 未连接
+        </div>
+
+        <div id="messageArea"></div>
+        <!-- 连接控制 -->
+        <div class="control-section">
+            <h3>🔌 连接控制</h3>
+            <div class="connection-info">
+                <strong>CAN接口:</strong>
+                <div class="interface-list" id="interfaceList">
+                    <span>未检测到接口</span>
+                </div>
+            </div>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button class="btn btn-success" onclick="enableSystem()">使能系统</button>
+                <button class="btn btn-danger" onclick="disableSystem()">失能系统</button>
+                <button class="btn" onclick="refreshInterfaces()">刷新接口</button>
+                <button class="btn" onclick="toZero()">回零</button>
+          
+                <button class="btn btn-danger" onclick="emergencyStop()">🛑 急停</button>
+                <button class="btn btn-success" onclick="emergencyResume()">▶️ 恢复</button>
+                
+                <button class="btn btn-set-to-zero " onclick="setToZero()">设置零点</button>
+            </div>
+        </div>
+        <div class="control-section">
+            <h3>📝 Y序列批量运动</h3>
+            <div class="form-group">
+                <label>输入Y序列（格式如[[0,1],[20,0.5],[70,1]]，Y单位为度，范围-70~70，时间单位s）:</label>
+                <textarea id="ySequenceInput" rows="3" style="width:100%;"></textarea>
+            </div>
+            <button class="btn btn-success" onclick="sendYSequence()">发送Y序列</button>
+        </div>
+         <!-- 关节控制 -->
+        <div class="control-section">
+            <h2>🦾 关节控制 (0x155/156/157)</h2>
+            <div class="joint-inputs">
+                <div class="form-group">
+                    <label>J1 角度 (°): <span class="range-value" id="j1Value">0.000</span></label>
+                    <div class="range-container">
+                        <input type="range" id="j1" min="-154000" max="154000" value="0" step="1" oninput="handleJointChange('j1')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>J2 角度 (°): <span class="range-value" id="j2Value">0.000</span></label>
+                    <div class="range-container">
+                        <input type="range" id="j2" min="0" max="195000" value="0" step="1" oninput="handleJointChange('j2')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>J3 角度 (°): <span class="range-value" id="j3Value">0.000</span></label>
+                    <div class="range-container">
+                        <input type="range" id="j3" min="-175000" max="0" value="0" step="1" oninput="handleJointChange('j3')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>J4 角度 (°): <span class="range-value" id="j4Value">0.000</span></label>
+                    <div class="range-container">
+                        <input type="range" id="j4" min="-102000" max="102000" value="0" step="1" oninput="handleJointChange('j4')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>J5 角度 (°): <span class="range-value" id="j5Value">0.000</span></label>
+                    <div class="range-container">
+                        <input type="range" id="j5" min="-75000" max="75000" value="0" step="1" oninput="handleJointChange('j5')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>J6 角度 (°): <span class="range-value" id="j6Value">0.000</span></label>
+                    <div class="range-container">
+                        <input type="range" id="j6" min="-120000" max="120000" value="0" step="1" oninput="handleJointChange('j6')">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>运动速度 (%):</label>
+                <div class="range-container">
+                    <input type="range" id="speedRange" min="0" max="100" value="50" oninput="updateSpeedValue()">
+                    <span class="range-value" id="speedValue">50</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div class="container">
+    <h2>手指控制</h2>
+    <div>
+        <h3>原子操作小指4,无名指3,中指2,食指1,大拇指0</h3>
+        <label>原子操作输入（如 [
+            [[1,4],[0.1,1]],
+            [[1,4,2],[0.1,0.3,0.5]],
+            [[1],[0.2]],
+            [[1],[0.2]]
+          ]）:</label><br>
+        <input type="text" id="pressInput" style="width: 400px;" value="[
+        [[1,4],[0.1,1]],
+        [[1,4,2],[0.1,0.3,0.5]],
+        [[1],[0.2]],
+        [[1],[0.2]]
+      ]
+      ">
+        <button onclick="applyAtomicPress()">发送原子动作</button>
+    </div>
+    
+</div>
+<div class="container">
+    <h2>混合控制（手+机械臂）</h2>
+    <div>
+        <label>混合输入（如 [
+            [["can0"],[1,4],[0.1,0.2]],
+            [["can1"],[1,3],[0.2,0.5]],
+            [["can2"],[20,1]],
+            [["can3"],[70,1]]
+        ] ）:</label><br>
+        <textarea id="mixedInput" style="width: 100%; height: 120px;">[
+    [["can0"],[1,4],[0.1,0.2]],
+    [["can1"],[1,3],[0.2,0.5]],
+    [["can2"],[20,1]],
+    [["can3"],[70,1]]
+]</textarea>
+        <button class="btn btn-success" onclick="handleMixedInput()">发送混合指令</button>
+    </div>
+</div>
+    <script>
+        //手指控制
+function applyAtomicPress() {
+            const input = document.getElementById("pressInput").value.trim();
+            let sequenceArray;
+            try {
+                sequenceArray = JSON.parse(input);
+                if (!Array.isArray(sequenceArray) || !Array.isArray(sequenceArray[0])) {
+                    throw new Error("格式不对");
+                }
+            } catch (e) {
+                alert("输入格式错误，请使用：[[[1,4],[0.1,1]],[[1],[0.2]]]");
+                return;
+            }
+            enqueueAtomicSequence(sequenceArray);
+        }
+
+        const currentState = [0x01,0, 240, 240, 240, 240, 240, 110];
+        const activeTimers = {};  // 每根手指的定时器
+        const atomicQueue = [];
+        let isProcessing = false;
+
+        function sendCANState() {
+            const canMessage = {
+                interface: "can0",
+                id: 0x28,
+                data: currentState
+            };
+            fetch('/api/hand/control', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(canMessage)
+            });
+        }
+
+        function enqueueAtomicSequence(sequenceArray) {
+            atomicQueue.push(...sequenceArray);
+            if (!isProcessing) {
+                processNextSequence();
+            }
+        }
+
+        function processNextSequence() {
+            if (atomicQueue.length === 0) {
+                isProcessing = false;
+                return;
+            }
+
+            isProcessing = true;
+            const [fingers, durations] = atomicQueue.shift();
+
+            // 设置每个手指为"按下"状态（值200）
+            fingers.forEach(fid => {
+                const index = fid + 2;
+                currentState[index] = 200;
+            });
+            sendCANState();
+
+            // 为每个手指设置"抬起"定时器
+            fingers.forEach((fid, i) => {
+                const duration = durations[i] * 1000;
+                const index = fid + 2;
+
+                // 取消旧定时器（如果这个手指有定时任务）
+                if (activeTimers[index]) {
+                    clearTimeout(activeTimers[index]);
+                }
+
+                activeTimers[index] = setTimeout(() => {
+                    currentState[index] = 240; // 抬起
+                    sendCANState();
+                    delete activeTimers[index];
+                }, duration);
+            });
+
+            // 下一个序列
+            setTimeout(() => {
+                processNextSequence();
+            }, Math.max(...durations) * 1000 + 50);
+        }
+
+
+        async function handleMultiActionInput() {
+            const input = document.getElementById('multiAtomInput').value.trim();
+
+            try {
+                // 安全解析输入
+                const parsed = Function('"use strict";return (' + input + ')')();
+                const [fingersList, timesList] = parsed;
+
+                if (!Array.isArray(fingersList) || !Array.isArray(timesList) || fingersList.length !== timesList.length) {
+                    alert("格式错误，例：{[[1,4],[2]], [[0.1,0.2],[0.3]]}");
+                    return;
+                }
+
+                for (let i = 0; i < fingersList.length; i++) {
+                    const fingers = fingersList[i];
+                    const times = timesList[i];
+
+                    if (fingers.length !== times.length) {
+                        alert(`第 ${i + 1} 组手指数与时间数不一致`);
+                        return;
+                    }
+
+                    // 同时发送这一组所有手指的"按下"命令
+                    for (let j = 0; j < fingers.length; j++) {
+                        const fid = fingers[j];
+                        sendCustomAction([...atomActions[fid]]);
+                    }
+
+                    // 设置抬起定时器
+                    for (let j = 0; j < fingers.length; j++) {
+                        const fid = fingers[j];
+                        const delay = times[j] * 1000;
+                        setTimeout(() => {
+                            const release = [...releaseAction];
+                            if (fid !== 0) release[fid + 1] = 240;
+                            sendCustomAction(release);
+                        }, delay);
+                    }
+
+                    // 等待这一组最长时间再进入下一组
+                    const maxDelay = Math.max(...times) * 1000;
+                    await new Promise(resolve => setTimeout(resolve, maxDelay + 50));
+                }
+
+            } catch (err) {
+                alert("解析失败，请检查格式，例：{[[1,4],[2]], [[0.1,0.2],[0.3]]}");
+            }
+        }
+
+        //机械臂控制
+        let systemEnabled = true;
+        let canInterfaces = [];
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshInterfaces();
+        });
+
+        // 更新速度显示值
+        function updateSpeedValue() {
+            const speedRange = document.getElementById('speedRange');
+            const speedValue = document.getElementById('speedValue');
+            speedValue.textContent = speedRange.value;
+        }
+
+        // 显示消息
+        function showMessage(message, type = 'success') {
+            const messageArea = document.getElementById('messageArea');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = message;
+            messageArea.appendChild(messageDiv);
+            
+            // 1秒后自动清除消息
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 1000);
+        }
+
+        // 更新状态栏
+        function updateStatusBar(status, color = '#4ecdc4') {
+            const statusBar = document.getElementById('statusBar');
+            statusBar.textContent = `系统状态: ${status}`;
+            statusBar.style.background = `linear-gradient(45deg, ${color}, #764ba2)`;
+        }
+        
+        // 发送Y序列
+        async function sendYSequence() {
+            if (!systemEnabled) {
+                showMessage('请先使能系统', 'error');
+                return;
+            }
+            let input = document.getElementById('ySequenceInput').value;
+            let seq;
+            try {
+                seq = JSON.parse(input);
+                if (!Array.isArray(seq)) throw new Error();
+            } catch {
+                showMessage('输入格式错误，需为[[y, t], ...]的JSON数组', 'error');
+                return;
+            }
+            // 校验范围并转换
+            let sendSeq = [];
+            for (const [y, t] of seq) {
+                if (typeof y !== 'number' || typeof t !== 'number' || y < -70 || y > 70) {
+                    showMessage('Y坐标超范围或格式错误', 'error');
+                    return;
+                }
+                sendSeq.push([Math.round(y * 1000), t*1000]);
+            }
+            try {
+                const response = await fetch('/api/arm/y_sequence', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({sequence: sendSeq})
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    showMessage('Y序列已发送');
+                } else {
+                    showMessage('发送失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('发送失败: ' + error.message, 'error');
+            }
+        }
+        // 刷新CAN接口
+        
+        async function refreshInterfaces() {
+            try {
+                const response = await fetch('/api/can_interfaces');
+                const data = await response.json();
+                canInterfaces = data.interfaces || [];
+                
+                const interfaceList = document.getElementById('interfaceList');
+                if (canInterfaces.length > 0) {
+                    interfaceList.innerHTML = canInterfaces.map(iface => 
+                        `<span class="interface-tag">${iface}</span>`
+                    ).join('');
+                } else {
+                    interfaceList.innerHTML = '<span>未检测到接口</span>';
+                }
+            } catch (error) {
+                showMessage('获取CAN接口失败: ' + error.message, 'error');
+            }
+        }
+
+        // 使能系统
+        async function enableSystem() {
+            try {
+                const response = await fetch('/api/arm/enable', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                if (response.ok) {
+                    systemEnabled = true;
+                    updateStatusBar('已使能', '#44bd32');
+                    showMessage('系统使能成功');
+                } else {
+                    showMessage('系统使能失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('系统使能失败: ' + error.message, 'error');
+            }
+        }
+
+        // 失能系统
+        async function disableSystem() {
+            try {
+                const response = await fetch('/api/arm/disable', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                if (response.ok) {
+                    systemEnabled = false;
+                    updateStatusBar('已失能', '#ff6b6b');
+                    showMessage('系统失能成功');
+                } else {
+                    showMessage('系统失能失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('系统失能失败: ' + error.message, 'error');
+            }
+        }
+
+        // 回零
+        async function toZero() {
+            try {
+                const response = await fetch('/api/arm/to_zero', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    showMessage('回零成功');
+                } else {
+                    showMessage('回零失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('回零失败: ' + error.message, 'error');
+            }
+        }
+        
+        // 发送控制指令 (0x151)
+        async function sendControlCommand() {
+            if (!systemEnabled) {
+                showMessage('请先使能系统', 'error');
+                return;
+            }
+
+            const moveMode = document.querySelector('input[name="moveMode"]:checked');
+            const speed = document.getElementById('speedRange').value;
+
+            if (!moveMode) {
+                showMessage('请选择MOVE模式', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/arm/send_control', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        move_mode: moveMode.value,
+                        speed: parseInt(speed)
+                    })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    showMessage(`控制指令发送成功 - 模式: ${moveMode.value}, 速度: ${speed}%`);
+                } else {
+                    showMessage('控制指令发送失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('控制指令发送失败: ' + error.message, 'error');
+            }
+        }
+
+        // 处理关节值变化
+        let jointChangeTimeout;
+        function handleJointChange(jointId) {
+            const slider = document.getElementById(jointId);
+            const valueDisplay = document.getElementById(jointId + 'Value');
+            const value = parseInt(slider.value);
+            valueDisplay.textContent = (value / 1000).toFixed(3);
+
+            // 清除之前的定时器
+            if (jointChangeTimeout) {
+                clearTimeout(jointChangeTimeout);
+            }
+
+            // 设置新的定时器，延迟100ms发送指令
+            jointChangeTimeout = setTimeout(() => {
+                sendJointCommand();
+            }, 100);
+        }
+
+        // 发送关节指令
+        async function sendJointCommand() {
+            if (!systemEnabled) {
+                showMessage('请先使能系统', 'error');
+                return;
+            }
+
+            const jointData = {
+                j1: parseInt(document.getElementById('j1').value),
+                j2: parseInt(document.getElementById('j2').value),
+                j3: parseInt(document.getElementById('j3').value),
+                j4: parseInt(document.getElementById('j4').value),
+                j5: parseInt(document.getElementById('j5').value),
+                j6: parseInt(document.getElementById('j6').value),
+                speed: parseInt(document.getElementById('speedRange').value)
+            };
+
+            try {
+                const response = await fetch('/api/arm/send_joint', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jointData)
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    showMessage('关节指令发送失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('关节指令发送失败: ' + error.message, 'error');
+            }
+        }
+
+
+        // 急停
+        async function emergencyStop() {
+            try {
+                const response = await fetch('/api/arm/emergency_stop', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    updateStatusBar('急停状态', '#ff6b6b');
+                    showMessage('急停执行成功', 'error');
+                } else {
+                    showMessage('急停执行失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('急停执行失败: ' + error.message, 'error');
+            }
+        }
+      
+        // 急停恢复
+        async function emergencyResume() {
+            try {
+                const response = await fetch('/api/arm/emergency_resume', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    updateStatusBar('急停恢复', '#feca57');
+                    showMessage('急停恢复成功，请重新使能系统', 'success');
+                } else {
+                    showMessage('急停恢复失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('急停恢复失败: ' + error.message, 'error');
+            }
+        }
+
+
+        // 定期检查系统状态
+        setInterval(refreshInterfaces, 30000); // 每30秒刷新一次接口列表
+
+        // ========== 混合输入处理 ==========
+        // 独立队列和状态，确保can0/can1/can2/can3互不干扰
+        const handQueues = { can0: [], can1: [] };
+        const handProcessing = { can0: false, can1: false };
+        const handStates = {
+            can0: [0x01,0, 240, 240, 240, 240, 240, 110],
+            can1: [0x01,0, 240, 240, 240, 240, 240, 110]
+        };
+        const handTimers = { can0: {}, can1: {} };
+
+        const armQueues = { can2: [], can3: [] };
+        const armProcessing = { can2: false, can3: false };
+
+        function handleMixedInput() {
+            const input = document.getElementById("mixedInput").value.trim();
+            let sequenceArray;
+            try {
+                sequenceArray = JSON.parse(input);
+                if (!Array.isArray(sequenceArray)) throw new Error("格式不对");
+            } catch (e) {
+                alert("输入格式错误，请检查！");
+                return;
+            }
+            // 分类
+            for (const item of sequenceArray) {
+                if (!Array.isArray(item) || item.length < 2) continue;
+                const can = item[0][0];
+                if (can === "can0" || can === "can1") {
+                    handQueues[can].push(item);
+                    if (!handProcessing[can]) processHandQueue(can);
+                } else if (can === "can2" || can === "can3") {
+                    armQueues[can].push(item);
+                    if (!armProcessing[can]) processArmQueue(can);
+                }
+            }
+        }
+        // 手指动作处理
+        function processHandQueue(can) {
+            if (handQueues[can].length === 0) {
+                handProcessing[can] = false;
+                return;
+            }
+            handProcessing[can] = true;
+            const item = handQueues[can].shift();
+            const fingers = item[1];
+            const durations = item[2];
+            // 设置每个手指为"按下"状态（值200）
+            fingers.forEach(fid => {
+                const index = fid + 2;
+                handStates[can][index] = 200;
+            });
+            sendCANStateWithCan(can);
+            // 为每个手指设置"抬起"定时器
+            fingers.forEach((fid, i) => {
+                const duration = durations[i] * 1000;
+                const index = fid + 2;
+                if (handTimers[can][index]) clearTimeout(handTimers[can][index]);
+                handTimers[can][index] = setTimeout(() => {
+                    handStates[can][index] = 240;
+                    sendCANStateWithCan(can);
+                    delete handTimers[can][index];
+                }, duration);
+            });
+            setTimeout(() => {
+                processHandQueue(can);
+            }, Math.max(...durations) * 1000 + 50);
+        }
+        function sendCANStateWithCan(can) {
+            const canMessage = {
+                interface: can,
+                id: 0x28,
+                data: handStates[can]
+            };
+            fetch('/api/hand/control', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(canMessage)
+            });
+        }
+        // 机械臂动作处理
+        function processArmQueue(can) {
+            if (armQueues[can].length === 0) {
+                armProcessing[can] = false;
+                return;
+            }
+            armProcessing[can] = true;
+            const item = armQueues[can].shift();
+            const y = item[1][0];
+            const t = item[1][1];
+            // 组包并发送
+            sendYSequenceWithCan(can, y, t).then(() => {
+                setTimeout(() => {
+                    processArmQueue(can);
+                }, t * 1000 + 50);
+            });
+        }
+        async function sendYSequenceWithCan(can, y, t) {
+            // 固定x,z,rx,ry,rz，y单位为度，转千分之一度
+            const sendSeq = [[Math.round(y * 1000), t * 1000]];
+            try {
+                const response = await fetch('/api/arm/y_sequence', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({sequence: sendSeq, interface: can})
+                });
+                const data = await response.json();
+                if (!response.ok) {
+                    showMessage('机械臂指令发送失败: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('机械臂指令发送失败: ' + error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>
