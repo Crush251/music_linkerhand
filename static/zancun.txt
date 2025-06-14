@@ -1,0 +1,239 @@
+<h2>📍 位姿控制 (0x152/153/154)P (点位)</h2>
+
+</div>
+<div id="poseInputs">
+    <div class="pose-inputs">
+        <div class="form-group">
+            <label>X 坐标 (mm): <span class="range-value" id="poseXValue">0.000</span></label>
+            <div class="range-container">
+                <input type="range" id="poseX" min="300000" max="500000" value="0" step="100" oninput="handlePoseChange('poseX')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Y 坐标 (mm): <span class="range-value" id="poseYValue">0.000</span></label>
+            <div class="range-container">
+                <input type="range" id="poseY" min="-150000" max="150000" value="0" step="100" oninput="handlePoseChange('poseY')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Z 坐标 (mm): <span class="range-value" id="poseZValue">0.000</span></label>
+            <div class="range-container">
+                <input type="range" id="poseZ" min="100000" max="300000" value="0" step="100" oninput="handlePoseChange('poseZ')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>RX 旋转 (°): <span class="range-value" id="poseRXValue">0.000</span></label>
+            <div class="range-container">
+                <input type="range" id="poseRX" min="000" max="000" value="0" step="100" oninput="handlePoseChange('poseRX')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>RY 旋转 (°): <span class="range-value" id="poseRYValue">0.000</span></label>
+            <div class="range-container">
+                <input type="range" id="poseRY" min="70000" max="90000" value="0" step="100" oninput="handlePoseChange('poseRY')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>RZ 旋转 (°): <span class="range-value" id="poseRZValue">0.000</span></label>
+            <div class="range-container">
+                <input type="range" id="poseRZ" min="0000" max="0000" value="0" step="100" oninput="handlePoseChange('poseRZ')">
+            </div>
+        </div>
+    </div>
+</div>
+
+// 处理位姿值变化
+let poseChangeTimeout;
+function handlePoseChange(poseId) {
+    const slider = document.getElementById(poseId);
+    const valueDisplay = document.getElementById(poseId + 'Value');
+    const value = parseInt(slider.value);
+    valueDisplay.textContent = (value / 1000).toFixed(3);
+
+    // 如果不是圆弧模式，则发送位姿指令
+    if (!document.getElementById('poseC').checked) {
+        if (poseChangeTimeout) {
+            clearTimeout(poseChangeTimeout);
+        }
+        poseChangeTimeout = setTimeout(() => {
+            sendPoseCommand();
+        }, 100);
+    }
+}
+
+// 处理位姿模式变化
+function handlePoseModeChange() {
+    const isArcMode = document.getElementById('poseC').checked;
+    document.getElementById('arcControls').style.display = isArcMode ? 'block' : 'none';
+}
+// 发送位姿指令
+async function sendPoseCommand() {
+    if (!systemEnabled) {
+        showMessage('请先使能系统', 'error');
+        return;
+    }
+
+    const poseMode = document.querySelector('input[name="poseMode"]:checked').value;
+    const poseData = {
+        x: parseInt(document.getElementById('poseX').value),
+        y: parseInt(document.getElementById('poseY').value),
+        z: parseInt(document.getElementById('poseZ').value),
+        rx: parseInt(document.getElementById('poseRX').value),
+        ry: parseInt(document.getElementById('poseRY').value),
+        rz: parseInt(document.getElementById('poseRZ').value),
+        speed: parseInt(document.getElementById('speedRange').value)
+    };
+
+    try {
+        const response = await fetch('/api/send_pose', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(poseData)
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            showMessage('位姿指令发送失败: ' + data.error, 'error');
+        }
+    } catch (error) {
+        showMessage('位姿指令发送失败: ' + error.message, 'error');
+    }
+}
+
+
+<!-- 混合控制（手+机械臂）-->
+<div class="container">
+    <h2>混合控制（手+机械臂）</h2>
+    <div>
+        <label>混合输入（如 [
+            [["can0"],[1,4],[0.1,0.2]],
+            [["can1"],[1,3],[0.2,0.5]],
+            [["can2"],[20,1]],
+            [["can3"],[70,1]]
+        ] ）:</label><br>
+        <textarea id="mixedInput" style="width: 100%; height: 120px;">[
+    [["can0"],[1,4],[0.1,0.2]],
+    [["can1"],[1,3],[0.2,0.5]],
+    [["can2"],[20,1]],
+    [["can3"],[70,1]]
+]</textarea>
+        <button class="btn btn-success" onclick="handleMixedInput()">发送混合指令</button>
+    </div>
+</div>
+
+
+// ========== 混合输入处理 ==========
+// 独立队列和状态，确保can0/can1/can2/can3互不干扰
+const handQueues = { can0: [], can1: [] };
+const handProcessing = { can0: false, can1: false };
+const handStates = {
+    can0: [0x01,0, 240, 240, 240, 240, 240, 110],
+    can1: [0x01,0, 240, 240, 240, 240, 240, 110]
+};
+const handTimers = { can0: {}, can1: {} };
+
+const armQueues = { can2: [], can3: [] };
+const armProcessing = { can2: false, can3: false };
+
+function handleMixedInput() {
+    const input = document.getElementById("mixedInput").value.trim();
+    let sequenceArray;
+    try {
+        sequenceArray = JSON.parse(input);
+        if (!Array.isArray(sequenceArray)) throw new Error("格式不对");
+    } catch (e) {
+        alert("输入格式错误，请检查！");
+        return;
+    }
+    // 分类
+    for (const item of sequenceArray) {
+        if (!Array.isArray(item) || item.length < 2) continue;
+        const can = item[0][0];
+        if (can === "can0" || can === "can1") {
+            handQueues[can].push(item);
+            if (!handProcessing[can]) processHandQueue(can);
+        } else if (can === "can2" || can === "can3") {
+            armQueues[can].push(item);
+            if (!armProcessing[can]) processArmQueue(can);
+        }
+    }
+}
+// 手指动作处理
+function processHandQueue(can) {
+    if (handQueues[can].length === 0) {
+        handProcessing[can] = false;
+        return;
+    }
+    handProcessing[can] = true;
+    const item = handQueues[can].shift();
+    const fingers = item[1];
+    const durations = item[2];
+    // 设置每个手指为"按下"状态（值200）
+    fingers.forEach(fid => {
+        const index = fid + 2;
+        handStates[can][index] = 200;
+    });
+    sendCANStateWithCan(can);
+    // 为每个手指设置"抬起"定时器
+    fingers.forEach((fid, i) => {
+        const duration = durations[i] * 1000;
+        const index = fid + 2;
+        if (handTimers[can][index]) clearTimeout(handTimers[can][index]);
+        handTimers[can][index] = setTimeout(() => {
+            handStates[can][index] = 240;
+            sendCANStateWithCan(can);
+            delete handTimers[can][index];
+        }, duration);
+    });
+    setTimeout(() => {
+        processHandQueue(can);
+    }, Math.max(...durations) * 1000 + 50);
+}
+function sendCANStateWithCan(can) {
+    const canMessage = {
+        interface: can,
+        id: 0x28,
+        data: handStates[can]
+    };
+    fetch('/api/hand/control', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(canMessage)
+    });
+}
+// 机械臂动作处理
+function processArmQueue(can) {
+    if (armQueues[can].length === 0) {
+        armProcessing[can] = false;
+        return;
+    }
+    armProcessing[can] = true;
+    const item = armQueues[can].shift();
+    const y = item[1][0];
+    const t = item[1][1];
+    // 组包并发送
+    sendYSequenceWithCan(can, y, t).then(() => {
+        setTimeout(() => {
+            processArmQueue(can);
+        }, t * 1000 + 50);
+    });
+}
+async function sendYSequenceWithCan(can, y, t) {
+    // 固定x,z,rx,ry,rz，y单位为度，转千分之一度
+    const sendSeq = [[Math.round(y * 1000), t * 1000]];
+    try {
+        const response = await fetch('/api/arm/y_sequence', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({sequence: sendSeq, interface: can})
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            showMessage('机械臂指令发送失败: ' + data.error, 'error');
+        }
+    } catch (error) {
+        showMessage('机械臂指令发送失败: ' + error.message, 'error');
+    }
+}

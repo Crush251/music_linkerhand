@@ -9,7 +9,7 @@
 
   2. 机械臂控制：
     机械臂原子操作序列控制
-
+    
 3.混合序列解析控制
 
 -->
@@ -17,7 +17,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <link rel="icon" href="/static/linker_hand_music.png" type="image/png">
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎹 钢琴演奏控制系统</title>
    <link rel="stylesheet" href="/static/style.css">
@@ -25,8 +27,6 @@
 <body>
     <div class="container">
         <h1>🎹 钢琴演奏控制系统</h1>
-
-        
         <div class="control-section">
             <h3>🔌 CAN接口配置</h3>
             <div class="connection-info">
@@ -35,11 +35,19 @@
                     <span>检测中...</span>
                 </div>
             </div>
-            <button class="btn" onclick="refreshInterfaces()">刷新接口</button>
+                <button class="btn" onclick="refreshInterfaces()">刷新接口</button>
         </div>
-
+        <div class="control-section">
+            <textarea id="pianoInput" placeholder="请输入钢琴演奏JSON"></textarea>
+            <button onclick="handlePianoSequence()">开始演奏</button>
+            <button onclick="resetPianoState()">重置状态</button>
+            <button onclick="emergencyStop()">紧急停止</button>
+<div id="messageDisplay"></div>
+        </div>
         <div id="canDevicesContainer" class="can-devices-grid"></div>
     </div>
+    <!-- 右侧消息日志区 -->
+    <div id="messageLogSidebar"></div>
 
     <script>
         // ===================== 全局变量和初始化 =====================
@@ -53,389 +61,549 @@
             refreshInterfaces();
         });
 
-        // ===================== 消息与状态栏 =====================
-      
-
-        // ===================== CAN接口与设备面板 =====================
-        // 刷新接口并生成设备面板
-        async function refreshInterfaces() {
-            try {
-                const response = await fetch('/api/can_interfaces');
-                const data = await response.json();
-                canInterfaces.length = 0;
-                canInterfaces.push(...(data.interfaces || []));
-                
-                const interfaceList = document.getElementById('interfaceList');
-                if (canInterfaces.length > 0) {
-                    interfaceList.innerHTML = canInterfaces.map(iface => 
-                        `<span class="interface-tag">${iface}</span>`
-                    ).join('');
-                } else {
-                    interfaceList.innerHTML = '<span>未检测到接口</span>';
-                }
-                
-                initializeCanDevices(canInterfaces.length);//canInterfaces.length是后端返回的可用CAN接口数量
-            } catch (error) {
-                showMessage('获取CAN接口失败: ' + error.message, 'error');
-            }
+   // ===================== 消息与状态栏 =====================
+        // 显示消息
+        function showMessage(message, type = 'success') {
+            let logDiv = document.getElementById('messageLogSidebar');
+            if (!logDiv) return;
+            const msgElem = document.createElement('div');
+            msgElem.className = `message ${type}`;
+            msgElem.textContent = message;
+            logDiv.appendChild(msgElem);
+            logDiv.scrollTop = logDiv.scrollHeight;
         }
 
-        // 动态生成CanDevLen个CAN设备面板
-        function initializeCanDevices(CanDevLen) {
-            const container = document.getElementById('canDevicesContainer');
-            container.innerHTML = '';
-            
-            for (let i = 0; i < CanDevLen; i++) {
-                const deviceDiv = document.createElement('div');
-                deviceDiv.className = 'can-device-panel';
-                deviceDiv.innerHTML = `
-                    <div class="device-header">
-                        <h3>CAN设备 ${i + 1}</h3>
-                        <div class="device-config">
-                            <select id="canSelect${i}" onchange="onCanInterfaceChange(${i})">
-                                <option value="">选择CAN接口</option>
-                                ${canInterfaces.map(iface => `<option value="${iface}">${iface}</option>`).join('')}
-                            </select>
-                            <select id="deviceType${i}" onchange="onDeviceTypeChange(${i})" disabled>
-                                <option value="">选择设备类型</option>
-                                <option value="hand">手部控制</option>
-                                <option value="arm">机械臂</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="deviceContent${i}" class="device-content"></div>
-                `;
-                container.appendChild(deviceDiv);
-            }
+        // 更新状态栏
+        function updateStatusBar(status, color = '#4ecdc4') {
+            const statusBar = document.getElementById('statusBar');
+            if (!statusBar) return;
+            statusBar.textContent = `系统状态: ${status}`;
+            statusBar.style.background = `linear-gradient(45deg, ${color}, #764ba2)`;
         }
-
-        // 选择CAN接口后启用设备类型选择
-        function onCanInterfaceChange(deviceIndex) {
-            const canSelect = document.getElementById(`canSelect${deviceIndex}`);
-            const deviceTypeSelect = document.getElementById(`deviceType${deviceIndex}`);
             
-            if (canSelect.value) {
-                deviceTypeSelect.disabled = false;
-            } else {
-                deviceTypeSelect.disabled = true;
-                deviceTypeSelect.value = '';
-                onDeviceTypeChange(deviceIndex);
-            }
+
+
+  // ===================== CAN接口与设备面板 =====================
+// 刷新接口并生成设备面板
+async function refreshInterfaces() {
+    try {
+        const response = await fetch('/api/can_interfaces');
+        const data = await response.json();
+        canInterfaces.length = 0;
+        canInterfaces.push(...(data.interfaces || []));
+        
+        const interfaceList = document.getElementById('interfaceList');
+        if (canInterfaces.length > 0) {
+            interfaceList.innerHTML = canInterfaces.map(iface => 
+                `<span class="interface-tag">${iface}</span>`
+            ).join('');
+        } else {
+            interfaceList.innerHTML = '<span>未检测到接口</span>';
         }
+        
+        initializeCanDevices(canInterfaces.length);
+    } catch (error) {
+        showMessage('获取CAN接口失败: ' + error.message, 'error');
+    }
+}
 
-        // 选择设备类型后渲染对应内容
-        function onDeviceTypeChange(deviceIndex) {
-            const canSelect = document.getElementById(`canSelect${deviceIndex}`);
-            const deviceTypeSelect = document.getElementById(`deviceType${deviceIndex}`);
-            const contentDiv = document.getElementById(`deviceContent${deviceIndex}`);
-            
-            if (!canSelect.value || !deviceTypeSelect.value) {
-                contentDiv.innerHTML = '';
-                return;
-            }
-
-            const canInterface = canSelect.value;
-            const deviceType = deviceTypeSelect.value;
-            
-            canDeviceConfigs[deviceIndex] = {
-                canInterface: canInterface,
-                deviceType: deviceType
-            };
-
-            if (deviceType === 'hand') {
-                renderHandControl(deviceIndex, contentDiv);
-            } else if (deviceType === 'arm') {
-                renderArmControl(deviceIndex, contentDiv);
-            }
-        }
-
-        // ===================== 手部控制相关 =====================
-        // 渲染手部控制区
-        function renderHandControl(deviceIndex, contentDiv) {
-            contentDiv.innerHTML = `
-                <div class="hand-control">
-                    <div class="hand-type-selection">
-                        <label>
-                            <input type="radio" name="handType${deviceIndex}" value="left" onchange="onHandTypeChange(${deviceIndex})"> 左手
-                        </label>
-                        <label>
-                            <input type="radio" name="handType${deviceIndex}" value="right" onchange="onHandTypeChange(${deviceIndex})"> 右手
-                        </label>
-                    </div>
-                    <div id="handContent${deviceIndex}" class="hand-content"></div>
+// 动态生成CAN设备面板
+function initializeCanDevices(CanDevLen) {
+    const container = document.getElementById('canDevicesContainer');
+    container.innerHTML = '';
+    
+    for (let i = 0; i < CanDevLen; i++) {
+        const deviceDiv = document.createElement('div');
+        deviceDiv.className = 'can-device-panel';
+        deviceDiv.innerHTML = `
+            <div class="device-header">
+                <h3>CAN设备 ${i + 1}</h3>
+                <div class="device-config">
+                    <select id="canSelect${i}" onchange="onCanInterfaceChange(${i})">
+                        <option value="">选择CAN接口</option>
+                        ${canInterfaces.map(iface => `<option value="${iface}">${iface}</option>`).join('')}
+                    </select>
+                    <select id="deviceType${i}" onchange="onDeviceTypeChange(${i})" disabled>
+                        <option value="">选择设备类型</option>
+                        <option value="hand">手部控制</option>
+                        <option value="arm">机械臂</option>
+                    </select>
                 </div>
-            `;
-        }
+            </div>
+            <div id="deviceContent${i}" class="device-content"></div>
+        `;
+        container.appendChild(deviceDiv);
+    }
+}
 
-        // 选择左/右手后渲染原子操作和滑块
-        function onHandTypeChange(deviceIndex) {
-            const handType = document.querySelector(`input[name="handType${deviceIndex}"]:checked`)?.value;
-            const handContentDiv = document.getElementById(`handContent${deviceIndex}`);
-            
-            if (!handType) {
-                handContentDiv.innerHTML = '';
-                return;
-            }
+// 选择CAN接口后启用设备类型选择
+function onCanInterfaceChange(deviceIndex) {
+    const canSelect = document.getElementById(`canSelect${deviceIndex}`);
+    const deviceTypeSelect = document.getElementById(`deviceType${deviceIndex}`);
+    
+    if (canSelect.value) {
+        deviceTypeSelect.disabled = false;
+    } else {
+        deviceTypeSelect.disabled = true;
+        deviceTypeSelect.value = '';
+        onDeviceTypeChange(deviceIndex);
+    }
+}
 
-            canDeviceConfigs[deviceIndex].handType = handType;
-            const canId = handType === 'left' ? '0x28' : '0x27';
+// 设备类型处理函数
+function onDeviceTypeChange(deviceIndex) {
+    const canSelect = document.getElementById(`canSelect${deviceIndex}`);
+    const deviceTypeSelect = document.getElementById(`deviceType${deviceIndex}`);
+    const contentDiv = document.getElementById(`deviceContent${deviceIndex}`);
+    
+    if (!canSelect.value || !deviceTypeSelect.value) {
+        contentDiv.innerHTML = '';
+        return;
+    }
+
+    const canInterface = canSelect.value;
+    const deviceType = deviceTypeSelect.value;
+    
+    canDeviceConfigs[deviceIndex] = {
+        canInterface: canInterface,
+        deviceType: deviceType
+    };
+
+    if (deviceType === 'hand') {
+        renderHandTypeSelection(deviceIndex, contentDiv);
+    } else if (deviceType === 'arm') {
+        canDeviceConfigs[deviceIndex].armSide = 'left';
+        canDeviceConfigs[deviceIndex].armMode = 'P';
+        renderArmControl(deviceIndex, contentDiv, true);
+    }
+}
+
+// 渲染手型选择
+function renderHandTypeSelection(deviceIndex, contentDiv) {
+    contentDiv.innerHTML = `
+        <div class="hand-type-selection">
+            <h4>选择手型</h4>
+            <div class="hand-type-options">
+                <label>
+                    <input type="radio" name="handModel${deviceIndex}" value="o7" checked 
+                           onchange="onHandModelChange(${deviceIndex})"> O7手型
+                </label>
+                <label>
+                    <input type="radio" name="handModel${deviceIndex}" value="l10" 
+                           onchange="onHandModelChange(${deviceIndex})"> L10手型
+                </label>
+            </div>
+            <div id="handControlPanel${deviceIndex}"></div>
+        </div>
+    `;
+    onHandModelChange(deviceIndex);
+}
+
+// 手型变更处理
+function onHandModelChange(deviceIndex) {
+    const handModel = document.querySelector(`input[name="handModel${deviceIndex}"]:checked`).value;
+    canDeviceConfigs[deviceIndex].handModel = handModel;
+    canDeviceConfigs[deviceIndex].handSide = 'left';
+    
+    const handContentDiv = document.getElementById(`handControlPanel${deviceIndex}`);
+    
+    if (handModel === 'o7') {
+        renderO7HandControl(deviceIndex, handContentDiv);
+    } else {
+        renderL10HandControl(deviceIndex, handContentDiv);
+    }
+}
+
+// 渲染O7手型控制
+function renderO7HandControl(deviceIndex, contentDiv) {
+    contentDiv.innerHTML = `
+        <div class="hand-control">
+            <div class="hand-side-selection">
+                <label><input type="radio" name="handSide${deviceIndex}" value="left" checked 
+                    onchange="updateHandSide(${deviceIndex})"> 左手</label>
+                <label><input type="radio" name="handSide${deviceIndex}" value="right" 
+                    onchange="updateHandSide(${deviceIndex})"> 右手</label>
+            </div>
             
-            handContentDiv.innerHTML = `
-                <div class="atomic-control">
-                    <h4>原子操作控制</h4>
-                    <label>原子操作输入（小指4,无名指3,中指2,食指1,大拇指0）:</label>
-                    <textarea id="atomicInput${deviceIndex}" rows="4" style="width:100%;">[
-    [[1,4],[0.1,1]],
-    [[1,4,2],[0.1,0.3,0.5]],
-    [[1],[0.2]],
-    [[1],[0.2]]
-]</textarea>
-                    <button onclick="sendAtomicAction(${deviceIndex})">发送原子动作</button>
+            <div class="slider-control">
+                <h4>手指控制</h4>
+                <div class="mode-selector">
+                    <label><input type="radio" name="controlMode${deviceIndex}" value="0x01" checked> 弯曲控制</label>
+                    <label><input type="radio" name="controlMode${deviceIndex}" value="0x05"> 速度控制</label>
                 </div>
+                <div id="fingerSliders${deviceIndex}"></div>
+            </div>
+            
+            <button onclick="updateHandPreset(${deviceIndex})">更新弹琴预设值</button>
+        </div>
+    `;
+    initO7FingerSliders(deviceIndex);
+}
 
-                <div class="slider-control">
-                    <h4>手指控制</h4>
-                    <div class="mode-selector">
-                        <label>
-                            <input type="radio" name="controlMode${deviceIndex}" value="0x01" checked> 弯曲控制
-                        </label>
-                        <label>
-                            <input type="radio" name="controlMode${deviceIndex}" value="0x05"> 速度控制
-                        </label>
-                    </div>
-                    <div id="fingerSliders${deviceIndex}"></div>
-                </div>
-                <button onclick="updateFingersPianoPreset(${deviceIndex})">更新弹琴预设值</button>
-            `;
-            // 初始化手指滑块
-            initFingerSliders(deviceIndex);
- 
-        }
+// 初始化O7手型滑块控制
+function initO7FingerSliders(deviceIndex) {
+    const fingerNames = [
+        "拇指弯曲", "拇指根部左右", "食指弯曲", "中指弯曲", 
+        "无名指弯曲", "小拇指弯曲", "大拇指上下"
+    ];
+    
+    const slidersContainer = document.getElementById(`fingerSliders${deviceIndex}`);
+    slidersContainer.innerHTML = '';
+    
+    fingerNames.forEach((name, index) => {
+        const container = document.createElement('div');
+        container.className = 'slider-container';
+        
+        const label = document.createElement('div');
+        label.className = 'slider-label';
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'finger-name';
+        nameSpan.textContent = name;
+        
+        const valueSpan = document.createElement('span');
+        valueSpan.className = 'value';
+        valueSpan.textContent = '128';
+        
+        const inputBox = document.createElement('input');
+        inputBox.type = 'number';
+        inputBox.min = '0';
+        inputBox.max = '255';
+        inputBox.value = '128';
+        inputBox.className = 'value-input';
+        inputBox.addEventListener('input', function() {
+            const value = Math.max(0, Math.min(255, parseInt(this.value) || 0));
+            this.value = value;
+            slider.value = value;
+            valueSpan.textContent = value;
+            sendO7FingerControl(deviceIndex);
+        });
+        
+        label.appendChild(nameSpan);
+        label.appendChild(valueSpan);
+        label.appendChild(inputBox);
+        
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = '0';
+        slider.max = '255';
+        slider.value = '128';
+        slider.dataset.index = index;
+        
+        slider.addEventListener('input', function() {
+            const value = this.value;
+            valueSpan.textContent = value;
+            inputBox.value = value;
+        });
+        
+        slider.addEventListener('change', function() {
+            sendO7FingerControl(deviceIndex);
+        });
+        
+        container.appendChild(label);
+        container.appendChild(slider);
+        slidersContainer.appendChild(container);
+    });
+}
 
-        // 初始化手指滑块
-        function initFingerSliders(deviceIndex) {
-            const fingerNames = [
-                "拇指弯曲", "拇指根部左右", "食指弯曲", "中指弯曲", 
-                "无名指弯曲", "小拇指弯曲", "大拇指上下"
-            ];
-            
-            const slidersContainer = document.getElementById(`fingerSliders${deviceIndex}`);
-            slidersContainer.innerHTML = '';
-            
-            fingerNames.forEach((name, index) => {
-                const container = document.createElement('div');
-                container.className = 'slider-container';
-                
-                const label = document.createElement('div');
-                label.className = 'slider-label';
-                
-                const nameSpan = document.createElement('span');
-                nameSpan.className = 'finger-name';
-                nameSpan.textContent = name;
-                
-                const valueSpan = document.createElement('span');
-                valueSpan.className = 'value';
-                valueSpan.textContent = '128';
-                
-                const inputBox = document.createElement('input');
-                inputBox.type = 'number';
-                inputBox.min = '0';
-                inputBox.max = '255';
-                inputBox.value = '128';
-                inputBox.className = 'value-input';
-                inputBox.addEventListener('input', function() {
-                    const value = Math.max(0, Math.min(255, parseInt(this.value) || 0));
-                    this.value = value;
-                    slider.value = value;
-                    valueSpan.textContent = value;
-                    sendFingerControl(deviceIndex);
-                });
-                
-                label.appendChild(nameSpan);
-                label.appendChild(valueSpan);
-                label.appendChild(inputBox);
-                
-                const slider = document.createElement('input');
-                slider.type = 'range';
-                slider.min = '0';
-                slider.max = '255';
-                slider.value = '128';
-                slider.dataset.index = index;
-                
-                slider.addEventListener('input', function() {
-                    const value = this.value;
-                    valueSpan.textContent = value;
-                    inputBox.value = value;
-                });
-                
-                slider.addEventListener('change', function() {
-                    sendFingerControl(deviceIndex);
-                });
-                
-                container.appendChild(label);
-                container.appendChild(slider);
-                slidersContainer.appendChild(container);
-            });
-        }
-
-        // 发送手指滑块控制指令
-        async function sendFingerControl(deviceIndex) {
-            const config = canDeviceConfigs[deviceIndex];
-            if (!config) return;
-            
-            const mode = document.querySelector(`input[name="controlMode${deviceIndex}"]:checked`).value;
-            const sliders = document.querySelectorAll(`#fingerSliders${deviceIndex} input[type="range"]`);
-            
-            const data = [parseInt(mode, 16)];
-            sliders.forEach(slider => {
-                data.push(parseInt(slider.value));
-            });
-            
-            while (data.length < 8) {
-                data.push(0);
-            }
-            
-            const canMessage = {
+// 发送O7手型控制指令 - 修复后的版本
+async function sendO7FingerControl(deviceIndex) {
+    const config = canDeviceConfigs[deviceIndex];
+    if (!config || config.handModel !== 'o7') return;
+    
+    const mode = document.querySelector(`input[name="controlMode${deviceIndex}"]:checked`).value;
+    const sliders = document.querySelectorAll(`#fingerSliders${deviceIndex} input[type="range"]`);
+    
+    // 构建数据包：指令码 + 7个关节值
+    const data = [parseInt(mode, 16)];
+    sliders.forEach(slider => {
+        data.push(parseInt(slider.value));
+    });
+    
+    // 补全8字节数据
+    while (data.length < 8) {
+        data.push(0);
+    }
+    
+    try {
+        const response = await fetch('/api/hand/o7/control', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
                 interface: config.canInterface,
-                id: config.handType === 'left' ? 0x28 : 0x27,
+                id: config.handSide === 'left' ? 0x28 : 0x27,
                 data: data
-            };
+            })
+        });
+        
+        if (!response.ok) {
+            const result = await response.json();
+            showMessage(`O7手指控制失败: ${result.error}`, 'error');
+        }
+    } catch (error) {
+        showMessage(`O7手指控制失败: ${error.message}`, 'error');
+    }
+}
+
+// 渲染L10手型控制
+function renderL10HandControl(deviceIndex, contentDiv) {
+    contentDiv.innerHTML = `
+        <div class="hand-control">
+            <div class="hand-side-selection">
+                <label><input type="radio" name="handSide${deviceIndex}" value="left" checked 
+                    onchange="updateHandSide(${deviceIndex})"> 左手</label>
+                <label><input type="radio" name="handSide${deviceIndex}" value="right" 
+                    onchange="updateHandSide(${deviceIndex})"> 右手</label>
+            </div>
             
-            try {
-                const response = await fetch('/api/hand/control', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(canMessage)
-                });
+            <div class="l10-controls">
+                <div class="control-group">
+                    <h4>关节1-6控制 (0x01指令)</h4>
+                    <div id="l10Joint1to6Sliders${deviceIndex}"></div>
+                </div>
                 
-                if (!response.ok) {
-                    const result = await response.json();
-                    showMessage(`手指控制失败: ${result.error}`, 'error');
-                }
-            } catch (error) {
-                showMessage(`手指控制失败: ${error.message}`, 'error');
-            }
-        }
+                <div class="control-group">
+                    <h4>关节7-10控制 (0x04指令)</h4>
+                    <div id="l10Joint7to10Sliders${deviceIndex}"></div>
+                </div>
+                
+                <div class="control-group">
+                    <h4>速度控制 (0x05指令)</h4>
+                    <div class="speed-control">
+                        <label>全局速度:</label>
+                        <input type="range" id="l10SpeedSlider${deviceIndex}" min="0" max="255" value="128">
+                        <span id="l10SpeedValue${deviceIndex}">128</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="updateHandPreset(${deviceIndex})">更新弹琴预设值</button>
+        </div>
+    `;
+    initL10FingerSliders(deviceIndex);
+}
 
-        // 更新手指滑块的弹琴预设值，发送给后端的api/hand/fingers_piano_preset
-        function updateFingersPianoPreset(deviceIndex) {
-            // 取7个手指滑块的值
-            const sliders = document.querySelectorAll(`#fingerSliders${deviceIndex} input[type="range"]`);
-            const values = [];
-            sliders.forEach(slider => {
-                values.push(parseInt(slider.value));
-            });
-            // 发送到后端
-            fetch('/api/hand/fingers_piano_preset', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(values)
-            }).then(res => res.json()).then(data => {
-                if (data.status === 'success') {
-                    showMessage('手指弹琴预设值已更新');
-                } else {
-                    showMessage('手指弹琴预设值更新失败', 'error');
-                }
-            }).catch(err => {
-                showMessage('手指弹琴预设值更新失败: ' + err, 'error');
-            });
-        }
+// 更新手部左右选择
+function updateHandSide(deviceIndex) {
+    canDeviceConfigs[deviceIndex].handSide = 
+        document.querySelector(`input[name="handSide${deviceIndex}"]:checked`).value;
+}
 
-        //这里应该是发送手指原子序列区域 /
-        async function sendAtomicAction(deviceIndex) {
+// 初始化L10手指滑块
+function initL10FingerSliders(deviceIndex) {
+    // 关节1-6滑块
+    const joint1to6Container = document.getElementById(`l10Joint1to6Sliders${deviceIndex}`);
+    joint1to6Container.innerHTML = '';
+    
+    ['拇指弯曲', '拇指根部左右', '食指弯曲', '中指弯曲', '无名指弯曲', '小拇指弯曲'].forEach((name, index) => {
+        joint1to6Container.innerHTML += `
+            <div class="slider-container">
+                <label>${name}:</label>
+                <input type="range" class="joint-slider" data-joint="${index+1}" min="0" max="255" value="128">
+                <span class="slider-value">128</span>
+            </div>
+        `;
+    });
+    
+    // 关节7-10滑块
+    const joint7to10Container = document.getElementById(`l10Joint7to10Sliders${deviceIndex}`);
+    joint7to10Container.innerHTML = '';
+    
+    ['食指张开', '中指张开', '小拇指张开', '大拇指'].forEach((name, index) => {
+        joint7to10Container.innerHTML += `
+            <div class="slider-container">
+                <label>${name}:</label>
+                <input type="range" class="joint-slider" data-joint="${index+7}" min="0" max="255" value="128">
+                <span class="slider-value">128</span>
+            </div>
+        `;
+    });
+    
+    // 滑块事件绑定
+    document.querySelectorAll(`#l10Joint1to6Sliders${deviceIndex} .joint-slider, 
+                             #l10Joint7to10Sliders${deviceIndex} .joint-slider`).forEach(slider => {
+        slider.addEventListener('input', function() {
+            this.nextElementSibling.textContent = this.value;
+        });
+        slider.addEventListener('change', function() {
+            sendL10ControlCommand(deviceIndex);
+        });
+    });
+    
+    // 速度滑块
+    const speedSlider = document.getElementById(`l10SpeedSlider${deviceIndex}`);
+    speedSlider.addEventListener('input', function() {
+        document.getElementById(`l10SpeedValue${deviceIndex}`).textContent = this.value;
+    });
+    speedSlider.addEventListener('change', function() {
+        sendL10SpeedCommand(deviceIndex);
+    });
+}
+
+        // 发送L10控制指令 - 修复后的版本
+        async function sendL10ControlCommand(deviceIndex) {
             const config = canDeviceConfigs[deviceIndex];
             if (!config) return;
             
-            const input = document.getElementById(`atomicInput${deviceIndex}`).value.trim();
-            let sequenceArray;
+            // 获取关节1-6的值
+            const joint1to6Values = [];
+            document.querySelectorAll(`#l10Joint1to6Sliders${deviceIndex} .joint-slider`).forEach(slider => {
+                joint1to6Values.push(parseInt(slider.value));
+            });
             
-            try {
-                sequenceArray = JSON.parse(input);
-                if (!Array.isArray(sequenceArray)) throw new Error("格式不对");
-            } catch (e) {
-                showMessage("输入格式错误", 'error');
-                return;
-            }
+            // 获取关节7-10的值  
+            const joint7to10Values = [];
+            document.querySelectorAll(`#l10Joint7to10Sliders${deviceIndex} .joint-slider`).forEach(slider => {
+                joint7to10Values.push(parseInt(slider.value));
+            });
             
-            const atomicData = {
-                interface: config.canInterface,
-                id: config.handType === 'left' ? 0x28 : 0x27,
-                sequence: sequenceArray
-            };
-           
+            // 发送关节1-6控制指令
             try {
-                const response = await fetch('/api/hand/atomic', {
+                await fetch('/api/hand/l10/control', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(atomicData)
+                    body: JSON.stringify({
+                        interface: config.canInterface,
+                        id: config.handSide === 'left' ? 0x28 : 0x27,
+                        data: [0x01, ...joint1to6Values]  // 把 cmd 放在 data 的第一位
+                    })
                 });
                 
-                const result = await response.json();
-                if (response.ok) {
-                    showMessage('原子动作发送成功');
-                } else {
-                    showMessage(`原子动作发送失败: ${result.error}`, 'error');
-                }
+                // 发送关节7-10控制指令
+                await fetch('/api/hand/l10/control', {
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        interface: config.canInterface,
+                        id: config.handSide === 'left' ? 0x28 : 0x27,
+                        data: [0x04, ... joint7to10Values]  // 把 cmd 放在 data 的第一位
+                    })
+                });
             } catch (error) {
-                showMessage(`原子动作发送失败: ${error.message}`, 'error');
+                showMessage(`L10控制指令发送失败: ${error.message}`, 'error');
             }
         }
+
+        // 发送L10速度指令
+        async function sendL10SpeedCommand(deviceIndex) {
+            const config = canDeviceConfigs[deviceIndex];
+            if (!config) return;
+            
+            const speedValue = parseInt(document.getElementById(`l10SpeedSlider${deviceIndex}`).value);
+            const speedValues = Array(5).fill(speedValue); // L10有5个手指
+            
+            try {
+                await fetch('/api/hand/l10/speed', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        interface: config.canInterface,
+                        id: config.handSide === 'left' ? 0x28 : 0x27,
+                        data: [0x05, ...speedValues]  // 把 cmd 放在 data 的第一位
+                    })
+                });
+            } catch (error) {
+                showMessage(`L10速度指令发送失败: ${error.message}`, 'error');
+            }
+        }
+
+        // 更新手部弹琴预设值 - 修复后的版本
+        async function updateHandPreset(deviceIndex) {
+            const config = canDeviceConfigs[deviceIndex];
+            if (!config || config.deviceType !== 'hand') return;
+            
+            try {
+                        let presetData;
+                        if (config.handModel === 'o7') {
+                            // O7预设值收集
+                            const values = [];
+                            document.querySelectorAll(`#fingerSliders${deviceIndex} input[type="range"]`)
+                                .forEach(s => values.push(parseInt(s.value)));
+                            presetData = { values: values };
+                        } else {
+                            // L10预设值收集，只收集5个手指的
+                            const values = [];
+                            document.querySelectorAll(`#l10Joint1to6Sliders${deviceIndex} .joint-slider`)
+                                .forEach(s => values.push(parseInt(s.value)));
+                            presetData = { values: values };
+                            console.log(presetData);
+                        }
+                        
+                        const response = await fetch(`/api/hand/${config.handModel}/piano_preset`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(presetData)
+                        });
+                        
+                        if (response.ok) {
+                            showMessage(`${config.handModel.toUpperCase()}弹琴预设值已更新`);
+                        } else {
+                            showMessage(`${config.handModel.toUpperCase()}弹琴预设值更新失败`, 'error');
+                        }
+                    } catch (error) {
+                        showMessage(`弹琴预设值更新失败: ${error.message}`, 'error');
+                    }
+                }
+
+        // 辅助函数：收集滑块值
+        function collectSliderValues(selector) {
+            const values = [];
+            document.querySelectorAll(selector).forEach(s => values.push(parseInt(s.value)));
+            return values;
+        }
+
 
         // ===================== 机械臂控制相关 =====================
-        // 渲染机械臂控制区
-        function renderArmControl(deviceIndex, contentDiv) {
-    contentDiv.innerHTML = `
-        <div class="arm-control">
-            <div class="arm-side-selection">
-                <label>
-                    <input type="radio" name="armSide${deviceIndex}" value="left" onchange="onArmSideChange(${deviceIndex})"> 左臂
-                </label>
-                <label>
-                    <input type="radio" name="armSide${deviceIndex}" value="right" onchange="onArmSideChange(${deviceIndex})"> 右臂
-                </label>
-            </div>
-            <div class="arm-basic-controls">
-                <button class="btn btn-success" onclick="enableArm(${deviceIndex})">使能</button>
-                <button class="btn btn-danger" onclick="disableArm(${deviceIndex})">失能</button>
-                <button class="btn btn-danger" onclick="emergencyStop(${deviceIndex})">🛑 急停</button>
-                <button class="btn btn-success" onclick="emergencyResume(${deviceIndex})">▶️ 恢复</button>
-                <button class="btn" onclick="toZero(${deviceIndex})">回零</button>
-                <button class="btn btn-set-to-zero" onclick="setToZero(${deviceIndex})">设置零点</button>
-            </div>
-            <div class="arm-mode-selection">
-                <label>
-                    <input type="radio" name="armMode${deviceIndex}" value="J" onchange="onArmModeChange(${deviceIndex})"> 关节模式(J)
-                </label>
-                <label>
-                    <input type="radio" name="armMode${deviceIndex}" value="P" onchange="onArmModeChange(${deviceIndex})"> 位姿模式(P)
-                </label>
-            </div>
-            <div id="armModeContent${deviceIndex}" class="arm-mode-content"></div>
-    `;
-}
-function onArmSideChange(deviceIndex) {
-    const side = document.querySelector(`input[name="armSide${deviceIndex}"]:checked`)?.value;
-    canDeviceConfigs[deviceIndex].armSide = side;
-}
-function getArmSideLabel(deviceIndex) {
-    const side = canDeviceConfigs[deviceIndex]?.armSide;
-    return side === 'right' ? '右臂' : '左臂';
-}
-        // 选择机械臂模式后渲染对应内容
+        // 渲染机械臂控制区，直接显示左右臂选择和P模式内容
+        function renderArmControl(deviceIndex, contentDiv, autoShow) {
+            const armSide = canDeviceConfigs[deviceIndex].armSide || 'left';
+            contentDiv.innerHTML = `
+                <div class="arm-control">
+                    <div class="arm-side-selection">
+                        <label>
+                            <input type="radio" name="armSide${deviceIndex}" value="left" ${armSide==='left'?'checked':''} onchange="onArmSideChange(${deviceIndex})"> 左臂
+                        </label>
+                        <label>
+                            <input type="radio" name="armSide${deviceIndex}" value="right" ${armSide==='right'?'checked':''} onchange="onArmSideChange(${deviceIndex})"> 右臂
+                        </label>
+                    </div>
+                    <div class="arm-basic-controls">
+                        <button class="btn btn-success" onclick="enableArm(${deviceIndex})">使能</button>
+                        <button class="btn btn-danger" onclick="disableArm(${deviceIndex})">失能</button>
+                        <button class="btn btn-danger" onclick="emergencyStop(${deviceIndex})">🛑 急停</button>
+                        <button class="btn btn-success" onclick="emergencyResume(${deviceIndex})">▶️ 恢复</button>
+                        <button class="btn" onclick="toZero(${deviceIndex})">回零</button>
+                        <button class="btn btn-set-to-zero" onclick="setToZero(${deviceIndex})">设置零点</button>
+                    </div>
+                    <div class="arm-mode-selection">
+                        <label>
+                            <input type="radio" name="armMode${deviceIndex}" value="J" onchange="onArmModeChange(${deviceIndex})"> 关节模式(J)
+                        </label>
+                        <label>
+                            <input type="radio" name="armMode${deviceIndex}" value="P" checked onchange="onArmModeChange(${deviceIndex})"> 位姿模式(P)
+                        </label>
+                    </div>
+                    <div id="armModeContent${deviceIndex}" class="arm-mode-content"></div>
+                </div>
+            `;
+            // 默认P模式，确保渲染
+            setTimeout(()=>{
+                renderPoseControl(deviceIndex, document.getElementById(`armModeContent${deviceIndex}`));
+            },0);
+        }
+
+        function onArmSideChange(deviceIndex) {
+            const side = document.querySelector(`input[name="armSide${deviceIndex}"]:checked`)?.value;
+            canDeviceConfigs[deviceIndex].armSide = side;
+        }
+
         function onArmModeChange(deviceIndex) {
             const armMode = document.querySelector(`input[name="armMode${deviceIndex}"]:checked`)?.value;
-            const armModeContentDiv = document.getElementById(`armModeContent${deviceIndex}`);
-            
-            if (!armMode) {
-                armModeContentDiv.innerHTML = '';
-                return;
-            }
-
             canDeviceConfigs[deviceIndex].armMode = armMode;
-            
+            const armModeContentDiv = document.getElementById(`armModeContent${deviceIndex}`);
             if (armMode === 'J') {
                 renderJointControl(deviceIndex, armModeContentDiv);
-            } else if (armMode === 'P') {
+            } else if (armMode === 'P'){
                 renderPoseControl(deviceIndex, armModeContentDiv);
             }
         }
@@ -455,11 +623,11 @@ function getArmSideLabel(deviceIndex) {
                                     <input type="range" id="j${i}Range${deviceIndex}" 
                                            min="${getJointMin(i)}" max="${getJointMax(i)}" value="0" step="1" 
                                            oninput="updateJointFromSlider(${deviceIndex}, ${i})">
-                                </div>
-                            </div>
+            </div>
+        </div>
                         `).join('')}
                     </div>
-                    <div class="form-group">
+            <div class="form-group">
                         <label>运动速度 (%):</label>
                         <input type="number" id="speedInput${deviceIndex}" value="50" min="0" max="100" 
                                onchange="updateSpeedFromInput(${deviceIndex})">
@@ -468,8 +636,8 @@ function getArmSideLabel(deviceIndex) {
                                    oninput="updateSpeedFromSlider(${deviceIndex})">
                             <span class="range-value" id="speedValue${deviceIndex}">50</span>
                         </div>
-                    </div>
-                </div>
+            </div>
+        </div>
             `;
         }
         // 渲染位姿控制区
@@ -518,24 +686,27 @@ function getArmSideLabel(deviceIndex) {
                     <input type="number" id="poseRZInput${deviceIndex}" value="0" min="-180" max="180" step="1" onchange="updatePoseFromInput(${deviceIndex}, 'RZ')">
                     <div class="range-container">
                         <input type="range" id="poseRZRange${deviceIndex}" min="-180000" max="180000" value="0" step="100" oninput="updatePoseFromSlider(${deviceIndex}, 'RZ')">
-                    </div>
                 </div>
-                <div class="form-group">
-                    <label>运动速度 (%):</label>
+            </div>
+            <div class="form-group">
+                <label>运动速度 (%):</label>
                     <input type="number" id="poseSpeedInput${deviceIndex}" value="50" min="0" max="100" step="1" onchange="updatePoseSpeedFromInput(${deviceIndex})">
-                    <div class="range-container">
+                <div class="range-container">
                         <input type="range" id="poseSpeedRange${deviceIndex}" min="0" max="100" value="50" step="1" oninput="updatePoseSpeedFromSlider(${deviceIndex})">
                         <span class="range-value" id="poseSpeedValue${deviceIndex}">50</span>
                     </div>
                 </div>
-                <!-- <button class="btn btn-success" onclick="sendPoseCommand(${deviceIndex})">发送位姿</button> -->
+                <button class="btn btn-success" onclick="sendPoseCommand(${deviceIndex})">发送位姿</button>
             </div>
         </div>
            <button onclick="updateArmPianoPreset(${deviceIndex})">更新${getArmSideLabel(deviceIndex)}弹琴预设值</button>
 
     `;
 }
-        
+        function getArmSideLabel(deviceIndex) {
+            const side = canDeviceConfigs[deviceIndex]?.armSide;
+            return side === 'right' ? '右臂' : '左臂';
+        }
         // 更新手臂弹琴位姿预设值，发送的是位姿的值
         function updateArmPianoPreset(deviceIndex) {
         const config = canDeviceConfigs[deviceIndex];
@@ -548,6 +719,9 @@ function getArmSideLabel(deviceIndex) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ side: config.armSide, values: values })
         }).then(res => res.json()).then(data => {
+
+
+
             if (data.status === 'success') {
                 showMessage(`${getArmSideLabel(deviceIndex)}弹琴预设值已更新`);
             } else {
@@ -557,24 +731,6 @@ function getArmSideLabel(deviceIndex) {
             showMessage(`${getArmSideLabel(deviceIndex)}弹琴预设值更新失败: ` + err, 'error');
         });
     }
-
-        // 这里应该是发送机械臂原子序列区域
-        // function renderPoseControl(deviceIndex, contentDiv) {
-        //     contentDiv.innerHTML = `
-
-
-        //         <div class="pose-control">
-        //             <h4>位姿控制</h4>
-        //             <div class="pose-inputs">
-        //                 <div class="form-group">
-        //                     <label>Y序列批量运动:</label>
-        //                     <textarea id="ySequenceInput${deviceIndex}" rows="3" style="width:100%;">[[0,1],[20,0.5],[70,1]]</textarea>
-        //                     <button class="btn btn-success" onclick="sendYSequence(${deviceIndex})">发送Y序列</button>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     `;
-        // }
 
         // 关节角度范围
         function getJointMin(jointIndex) {
@@ -740,6 +896,7 @@ function getArmSideLabel(deviceIndex) {
             }
         }
         // 机械臂基础操作
+        
         // 使能机械臂
         async function enableArm(deviceIndex) {
             const config = canDeviceConfigs[deviceIndex];
@@ -766,7 +923,7 @@ function getArmSideLabel(deviceIndex) {
         async function disableArm(deviceIndex) {
             const config = canDeviceConfigs[deviceIndex];
             if (!config) return;
-            
+
             try {
                 const response = await fetch('/api/arm/disable', {
                     method: 'POST',
@@ -788,14 +945,14 @@ function getArmSideLabel(deviceIndex) {
         async function emergencyStop(deviceIndex) {
             const config = canDeviceConfigs[deviceIndex];
             if (!config) return;
-            
+
             try {
                 const response = await fetch('/api/arm/emergency_stop', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ interface: config.canInterface })
                 });
-                
+
                 const result = await response.json();
                 if (response.ok) {
                     showMessage(`${config.canInterface} 机械臂急停成功`, 'error');
@@ -862,7 +1019,7 @@ function getArmSideLabel(deviceIndex) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ interface: config.canInterface })
                 });
-                
+
                 const result = await response.json();
                 if (response.ok) {
                     showMessage(`${config.canInterface} 机械臂设置零点成功`);
@@ -874,50 +1031,7 @@ function getArmSideLabel(deviceIndex) {
             }
         }
 
-        // 发送Y序列批量运动
-        async function sendYSequence(deviceIndex) {
-            const config = canDeviceConfigs[deviceIndex];
-            if (!config) return;
-            
-            let input = document.getElementById(`ySequenceInput${deviceIndex}`).value;
-            let seq;
-            try {
-                seq = JSON.parse(input);
-                if (!Array.isArray(seq)) throw new Error();
-            } catch {
-                showMessage('Y序列输入格式错误', 'error');
-                return;
-            }
-            
-            let sendSeq = [];
-            for (const [y, t] of seq) {
-                if (typeof y !== 'number' || typeof t !== 'number' || y < -70 || y > 70) {
-                    showMessage('Y坐标超范围或格式错误', 'error');
-                    return;
-                }
-                sendSeq.push([Math.round(y * 1000), t * 1000]);
-            }
-            
-            try {
-                const response = await fetch('/api/arm/y_sequence', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        interface: config.canInterface,
-                        sequence: sendSeq 
-                    })
-                });
-                
-                const result = await response.json();
-                if (response.ok) {
-                    showMessage(`${config.canInterface} Y序列发送成功`);
-                } else {
-                    showMessage(`${config.canInterface} Y序列发送失败: ${result.error}`, 'error');
-                }
-            } catch (error) {
-                showMessage(`Y序列发送失败: ${error.message}`, 'error');
-            }
-        }
-    </script>
-   </body>
-   </html>
+   
+   </script>
+</body>
+</html>

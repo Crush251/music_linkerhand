@@ -1,0 +1,206 @@
+{
+    "default_position": {
+        "left": {
+            "x": 0,
+            "y": 33,
+            "z": 0
+        },
+        "right": {
+            "x": 0,
+            "y": 47,
+            "z": 0
+        }
+    },
+    "music": [
+    {
+        "index": 0,
+        "left": {
+            "fingers": ["index", "ring"],
+            "move": {
+                "y": 1,
+                "x": 0
+            },
+            "time": [0.1, 0.15]
+        },
+        "right": {
+            "fingers": ["middle", "pinky"],
+            "move": {
+                "y": -1,
+                "x": 0
+            },
+            "time": [0.15, 0.1]
+        }
+    },
+    {
+        "index": 1,
+        "left": {
+            "fingers": ["middle", "ring", "pinky"],
+            "move": {
+                "y": -2,
+                "x": 0
+            },
+            "time": [0.1, 0.1, 0.1]
+        },
+        "right": {
+            "fingers": ["index"],
+            "move": {
+                "y": 2,
+                "x": 0
+            },
+            "time": [0.1]
+        }
+    },
+    {
+        "index": 2,
+        "left": {
+            "fingers": [],
+            "move": {
+                "y": 2,
+                "x": 0
+            },
+            "time": []
+        },
+        "right": {
+            "fingers": ["ring", "pinky"],
+            "move": {
+                "y": -2,
+                "x": 0
+            },
+            "time": [0.1, 0.1]
+        }
+    },
+    {
+        "index": 3,
+        "left": {
+            "fingers": ["index", "middle", "ring"],
+            "move": {
+                "y": -3,
+                "x": 0
+            },
+            "time": [0.1, 0.15, 0.1]
+        },
+        "right": {
+            "fingers": [],
+            "move": {
+                "y": 3,
+                "x": 0
+            },
+            "time": []
+        }
+    },
+    {
+        "index": 4,
+        "left": {
+            "fingers": ["pinky"],
+            "move": {
+                "y": 4,
+                "x": 0
+            },
+            "time": [0.1]
+        },
+        "right": {
+            "fingers": ["middle", "ring"],
+            "move": {
+                "y": -4,
+                "x": 0
+            },
+            "time": [0.1, 0.15]
+        }
+    },
+    {
+        "index": 5,
+        "left": {
+            "fingers": [],
+            "move": {
+                "y": -2,
+                "x": 0
+            },
+            "time": []
+        },
+        "right": {
+            "fingers": [],
+            "move": {
+                "y": 3,
+                "x": 0
+            },
+            "time": []
+        }
+    },
+    {
+        "index": 6,
+        "left": {
+            "fingers": ["index", "middle", "pinky"],
+            "move": {
+                "y": -2,
+                "x": 0
+            },
+            "time": [0.15, 0.1, 0.1]
+        },
+        "right": {
+            "fingers": ["middle", "ring", "pinky"],
+            "move": {
+                "y": 3,
+                "x": 0
+            },
+            "time": [0.1, 0.1, 0.15]
+        }
+    },
+    {
+        "index": 7,
+        "left": {
+            "fingers": ["index"],
+            "move": {
+                "y": 3,
+                "x": 0
+            },
+            "time": [0.1]
+        },
+        "right": {
+            "fingers": ["ring"],
+            "move": {
+                "y": -3,
+                "x": 0
+            },
+            "time": [0.1]
+        }
+    },
+    {
+        "index": 8,
+        "left": {
+            "fingers": [],
+            "move": {
+                "y": -2,
+                "x": 0
+            },
+            "time": []
+        },
+        "right": {
+            "fingers": [],
+            "move": {
+                "y": 2,
+                "x": 0
+            },
+            "time": []
+        }
+    },
+    {
+        "index": 9,
+        "left": {
+            "fingers": ["middle", "pinky"],
+            "move": {
+                "y": 2,
+                "x": 0
+            },
+            "time": [0.1, 0.1]
+        },
+        "right": {
+            "fingers": ["index", "middle", "ring", "pinky"],
+            "move": {
+                "y": 2,
+                "x": 0
+            },
+            "time": [0.1, 0.1, 0.15, 0.1]
+        }
+    }
+]
+}

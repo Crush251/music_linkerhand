@@ -20,22 +20,26 @@ type CanMessage struct {
 }
 
 // 手指弹琴预设值
-var fingersPianoPreset = []byte{0, 0, 0, 0, 0, 0, 0}
+var O7FingerPianoPreset = []byte{0, 255, 235, 235, 235, 235, 100}
+var L10FingerPianoPreset = []byte{0, 255, 235, 235, 235, 235}
 
 // 左臂弹琴预设值，对应xyzrxyz
-var leftArmPianoPreset = []int{0, 0, 0, 0, 0, 0}
+var leftArmPianoPreset = []int{400, 0, 170, 0, 80, 0}
 
 // 右臂弹琴预设值，对应xyzrxyz
-var rightArmPianoPreset = []int{0, 0, 0, 0, 0, 0}
+var rightArmPianoPreset = []int{400, 0, 170, 0, 80, 0}
 
 type ArmPianoPresetReq struct {
 	Side   string `json:"side"`   // "left" or "right"
 	Values []int  `json:"values"` // 6个关节/位姿
 }
 
+type FingerPianoPresetReq struct {
+	Values []byte `json:"values"`
+}
+
 func main() {
 	r := gin.Default()
-
 	// 静态文件服务
 	r.Static("/static", "./static")
 	r.GET("/", func(c *gin.Context) {
@@ -411,7 +415,6 @@ func main() {
 				return
 			}
 			if req.Side == "left" {
-				//转化成16进制再
 				leftArmPianoPreset = req.Values
 				fmt.Println("leftArmPianoPreset: ", leftArmPianoPreset)
 			} else if req.Side == "right" {
@@ -425,7 +428,7 @@ func main() {
 	// ====================== 手指路由组 (/api/hand/*) ======================
 	handGroup := r.Group("/api/hand")
 	{
-		handGroup.POST("/control", func(c *gin.Context) {
+		handGroup.POST("/o7/control", func(c *gin.Context) {
 			var msg CanMessage
 			if err := json.NewDecoder(c.Request.Body).Decode(&msg); err != nil {
 				http.Error(c.Writer, fmt.Sprintf("请求解析失败: %v", err), http.StatusBadRequest)
@@ -442,41 +445,78 @@ func main() {
 			}
 			c.JSON(http.StatusOK, gin.H{"status": "success"})
 		})
-		handGroup.POST("/atomic", func(c *gin.Context) {
-			canMessage := CanMessage{
-				Interface: "can0",
-				Id:        0x27,
-				Data:      []byte{0x01, 128, 128, 128, 128, 128, 128, 128},
+		// 更新手指弹琴预设值
+		handGroup.POST("/o7/piano_preset", func(c *gin.Context) {
+			// 获取请求体中的数据
+			var values FingerPianoPresetReq
+			if err := c.ShouldBindJSON(&values); err != nil {
+				c.JSON(400, gin.H{"error": "invalid request"})
+				return
 			}
-			if err := forwardToCanService(canMessage); err != nil {
+			if len(values.Values) != 7 {
+				c.JSON(400, gin.H{"error": "must be 7 values"})
+				return
+			}
+			O7FingerPianoPreset = values.Values
+			fmt.Println("O7FingerPianoPreset: ", O7FingerPianoPreset)
+			c.JSON(200, gin.H{"status": "success"})
+		})
+		handGroup.POST("/o7/speed", func(c *gin.Context) {
+			var msg CanMessage
+			if err := json.NewDecoder(c.Request.Body).Decode(&msg); err != nil {
+				http.Error(c.Writer, fmt.Sprintf("请求解析失败: %v", err), http.StatusBadRequest)
+				return
+			}
+			if err := forwardToCanService(msg); err != nil {
 				http.Error(c.Writer, fmt.Sprintf("发送失败: %v", err), http.StatusInternalServerError)
 				return
 			}
 			c.JSON(http.StatusOK, gin.H{"status": "success"})
 		})
-		// 更新手指弹琴预设值
-		handGroup.POST("/fingers_piano_preset", func(c *gin.Context) {
-			var values []byte
+		handGroup.POST("/l10/control", func(c *gin.Context) {
+			var msg CanMessage
+			if err := json.NewDecoder(c.Request.Body).Decode(&msg); err != nil {
+				http.Error(c.Writer, fmt.Sprintf("请求解析失败: %v", err), http.StatusBadRequest)
+				return
+			}
+			if err := forwardToCanService(msg); err != nil {
+				http.Error(c.Writer, fmt.Sprintf("发送失败: %v", err), http.StatusInternalServerError)
+				return
+			}
+			c.JSON(http.StatusOK, gin.H{"status": "success"})
+		})
+		handGroup.POST("/l10/speed", func(c *gin.Context) {
+			var msg CanMessage
+			if err := json.NewDecoder(c.Request.Body).Decode(&msg); err != nil {
+				http.Error(c.Writer, fmt.Sprintf("请求解析失败: %v", err), http.StatusBadRequest)
+				return
+			}
+			if err := forwardToCanService(msg); err != nil {
+				http.Error(c.Writer, fmt.Sprintf("发送失败: %v", err), http.StatusInternalServerError)
+				return
+			}
+			c.JSON(http.StatusOK, gin.H{"status": "success"})
+		})
+		handGroup.POST("/l10/piano_preset", func(c *gin.Context) {
+			var values FingerPianoPresetReq
 			if err := c.ShouldBindJSON(&values); err != nil {
 				c.JSON(400, gin.H{"error": "invalid request"})
 				return
 			}
-			if len(values) != 7 {
-				c.JSON(400, gin.H{"error": "must be 7 values"})
-				return
-			}
-			fingersPianoPreset = values
-			fmt.Println("fingersPianoPreset: ", fingersPianoPreset)
+			L10FingerPianoPreset = values.Values
+			fmt.Println("L10FingerPianoPreset: ", L10FingerPianoPreset)
 			c.JSON(200, gin.H{"status": "success"})
 		})
+
 	}
 
 	// 查询CAN设备接口
 	r.GET("/api/can_interfaces", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"interfaces": QueryNumberofCanDevices()})
 	})
-	fmt.Println("server running on port http://localhost:6120")
-	r.Run(":6120")
+	fmt.Println("server running on port http://localhost:6130")
+	r.Run(":6130")
+
 }
 
 // 将两个int32转换为8字节数据 (每个int32占4字节，已经是0.001°单位)

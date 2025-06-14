@@ -1,0 +1,8347 @@
+{
+    "default_position": {
+        "left": {
+            "x": 0,
+            "y": 19,
+            "z": 0
+        },
+        "right": {
+            "x": 0,
+            "y": 27,
+            "z": 0
+        }
+    },
+    "music": [
+        {
+            "index": 0,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 1,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 2,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 3,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 4,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 5,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 6,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 7,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 8,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 9,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 10,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 11,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 12,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 13,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 14,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 15,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 16,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 17,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 18,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 19,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 20,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 21,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 22,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 23,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 24,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 25,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 26,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 27,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 28,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 29,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 30,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 31,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 32,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 33,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 34,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 35,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 36,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 4,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 37,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 38,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -4,
+                    "x": 0
+                },
+                "time": [
+                    16
+                ]
+            }
+        },
+        {
+            "index": 39,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 40,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 41,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 42,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 43,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 44,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 45,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 46,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 47,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 48,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 49,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 50,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 51,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 52,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 53,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 54,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 55,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 56,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 57,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 58,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 59,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 60,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 61,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 62,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 63,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 64,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 65,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 66,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 67,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 68,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 69,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 70,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 71,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 72,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 73,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 74,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 75,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 76,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 77,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 78,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 79,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 80,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 81,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 82,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 83,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 84,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 85,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 86,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -3,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 87,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 88,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 89,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 90,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 91,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 92,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 93,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 94,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 95,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 96,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 97,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 98,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 99,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 100,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 101,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 102,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    16
+                ]
+            }
+        },
+        {
+            "index": 103,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 104,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 105,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 106,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 107,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 108,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 109,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 110,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 111,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 112,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 113,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 114,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 115,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 116,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 117,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 118,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    16
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 119,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 120,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 121,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 122,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 123,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 124,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 125,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 126,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 127,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 128,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 129,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 130,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 131,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 132,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 4,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 133,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 134,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky",
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2,
+                    4
+                ]
+            }
+        },
+        {
+            "index": 135,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 136,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 137,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 138,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 139,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 140,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 141,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 142,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 143,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 144,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 145,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 146,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 147,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 148,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 149,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 150,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 151,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 152,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 153,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 154,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 155,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 156,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 157,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 158,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -2,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 159,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 160,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 161,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 162,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 163,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 164,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 165,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 166,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 3,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 167,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 168,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 169,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 170,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 171,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 172,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 173,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 174,
+            "left": {
+                "fingers": [
+                    "middle",
+                    "pinky"
+                ],
+                "move": {
+                    "y": -2,
+                    "x": 0
+                },
+                "time": [
+                    8,
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 175,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 176,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 177,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 178,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 179,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 180,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 181,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 182,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 183,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 184,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 185,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 186,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 187,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 188,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 189,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 190,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 191,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 192,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 193,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 194,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 3,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 195,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 196,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 197,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 198,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 199,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 200,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 201,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 202,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 203,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 204,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 205,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 206,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 207,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 208,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 209,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 210,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 211,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 212,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 213,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 214,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 215,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 216,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 217,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 218,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 219,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 220,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 221,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 222,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 5,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 223,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 224,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 225,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 226,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 3,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 227,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 228,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 229,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 230,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -5,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 231,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 232,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 233,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 234,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 235,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 236,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 237,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 238,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 239,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 240,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 241,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 242,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 243,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 244,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 245,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 246,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 247,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 248,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 249,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 250,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 251,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 252,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 253,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 254,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 255,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 256,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 257,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 258,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -2,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 259,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 260,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 261,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 262,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 263,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 264,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 265,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 266,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 267,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 268,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 269,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 270,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 271,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 272,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 273,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 274,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 275,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 276,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 277,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 278,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 279,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 280,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 281,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 282,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 283,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 284,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 285,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 286,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -2,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 287,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 288,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": -1,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 289,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 290,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 291,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 292,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 293,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 294,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 2,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 295,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 296,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 297,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 298,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 299,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 300,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 301,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 302,
+            "left": {
+                "fingers": [
+                    "middle",
+                    "pinky"
+                ],
+                "move": {
+                    "y": -3,
+                    "x": 0
+                },
+                "time": [
+                    8,
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 303,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 304,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 305,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 306,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 307,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 308,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 309,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 310,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 311,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 312,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 313,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 314,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 315,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 316,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 317,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 318,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 319,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 320,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 321,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 322,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 3,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 323,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 324,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 325,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 326,
+            "left": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 327,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 328,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 329,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 330,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 331,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 332,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 333,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    1
+                ]
+            }
+        },
+        {
+            "index": 334,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            }
+        },
+        {
+            "index": 335,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 336,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 337,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 338,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 339,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 340,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 341,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 342,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 343,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 344,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 345,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 346,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "index"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 347,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 348,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 349,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 350,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 351,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 352,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 353,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 354,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 3,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 355,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 356,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    2
+                ]
+            }
+        },
+        {
+            "index": 357,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 358,
+            "left": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 1,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    12
+                ]
+            }
+        },
+        {
+            "index": 359,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 360,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 361,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 362,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 363,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 364,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 365,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 366,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 367,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 368,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 369,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 370,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 371,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 372,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 373,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 374,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    12
+                ]
+            }
+        },
+        {
+            "index": 375,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 376,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 377,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 378,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 379,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 380,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 381,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 382,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 383,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 384,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 385,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 386,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    4
+                ]
+            }
+        },
+        {
+            "index": 387,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 388,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 389,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 390,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "ring"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    16
+                ]
+            }
+        },
+        {
+            "index": 391,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 392,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 393,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 394,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 395,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 396,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 397,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 398,
+            "left": {
+                "fingers": [
+                    "pinky"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    8
+                ]
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 399,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 400,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 401,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 402,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 403,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 404,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 405,
+            "left": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            },
+            "right": {
+                "fingers": [],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": []
+            }
+        },
+        {
+            "index": 406,
+            "left": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    16
+                ]
+            },
+            "right": {
+                "fingers": [
+                    "middle"
+                ],
+                "move": {
+                    "y": 0,
+                    "x": 0
+                },
+                "time": [
+                    16
+                ]
+            }
+        }
+    ]
+}
