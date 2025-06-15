@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"sync"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -18,16 +19,94 @@ type CanMessage struct {
 	Id        uint32 `json:"id"`
 	Data      []byte `json:"data"`
 }
+type PianoConfig struct {
+	Interfaces struct {
+		LeftHand  string `json:"leftHand"`
+		RightHand string `json:"rightHand"`
+		LeftArm   string `json:"leftArm"`
+		RightArm  string `json:"rightArm"`
+	} `json:"interfaces"`
+	MusicData MusicData `json:"musicData"`
+}
+
+type MusicData struct {
+	DefaultPosition struct {
+		Left  ArmPosition `json:"left"`
+		Right ArmPosition `json:"right"`
+	} `json:"default_position"`
+	Music []MusicNote `json:"music"`
+}
+
+type ArmPosition struct {
+	X    int `json:"x"`
+	Y    int `json:"y"`
+	Z    int `json:"z"`
+	Move int `json:"move"` // 机械臂移动几个单位
+}
+
+// ArmMovement 表示机械臂的移动指令
+type ArmMovement struct {
+	X int `json:"x"` // X轴移动量
+	Y int `json:"y"` // Y轴移动量
+}
+
+// HandAction 表示单手的动作指令
+type HandAction struct {
+	Fingers []string    `json:"fingers"` // 要活动的手指列表
+	Move    ArmMovement `json:"move"`    // 机械臂移动指令
+	Time    []float64   `json:"time"`    // 每个手指的动作时间(秒)
+}
+
+// MusicNote 表示一个完整的音乐节拍指令
+type MusicNote struct {
+	Index int        `json:"index"` // 节拍序号
+	Left  HandAction `json:"left"`  // 左手动作
+	Right HandAction `json:"right"` // 右手动作
+}
+
+// 定义位姿请求结构体
+type PoseRequest struct {
+	Interface string `json:"interface"`
+	X         int    `json:"x"` // 已经是0.001mm单位
+	Y         int    `json:"y"`
+	Z         int    `json:"z"`
+	RX        int    `json:"rx"` // 已经是0.001°单位
+	RY        int    `json:"ry"`
+	RZ        int    `json:"rz"`
+	Speed     int    `json:"speed"` // 0-100
+}
+
+// 手指映射
+var fingerIndexMap = map[string]int{
+	"index":  2,
+	"middle": 3,
+	"ring":   4,
+	"pinky":  5,
+}
 
 // 手指弹琴预设值
 var O7FingerPianoPreset = []byte{0, 255, 235, 235, 235, 235, 100}
-var L10FingerPianoPreset = []byte{0, 255, 235, 235, 235, 235}
+var L10FingerPianoPreset = []byte{0, 0, 225, 225, 225, 225}
 
 // 左臂弹琴预设值，对应xyzrxyz
-var leftArmPianoPreset = []int{400, 0, 170, 0, 80, 0}
+var leftArmPianoPreset = []int{400, 0, 251, 0, 80, 0}
 
 // 右臂弹琴预设值，对应xyzrxyz
-var rightArmPianoPreset = []int{400, 0, 170, 0, 80, 0}
+var rightArmPianoPreset = []int{400, 0, 240, 0, 85, 0}
+
+var L10currentleftFinger = []byte{0, 0, 225, 225, 225, 225}
+var L10currentrightFinger = []byte{0, 0, 225, 225, 225, 225}
+var O7currentleftFinger = []byte{0, 255, 235, 235, 235, 235, 100}
+var O7currentrightFinger = []byte{0, 255, 235, 235, 235, 235, 100}
+
+// 机械臂和灵巧手canid
+var LeftHand = "can0"
+var RightHand = "can1"
+var LeftArm = "can2"
+var RightArm = "can3"
+
+var killPiano = false
+var stopPiano = false
 
 type ArmPianoPresetReq struct {
 	Side   string `json:"side"`   // "left" or "right"
@@ -232,175 +311,21 @@ func main() {
 
 			c.JSON(http.StatusOK, gin.H{"status": "to zero"})
 		})
-		// 发送位姿指令
+
+		// 发送位姿指令的路由处理
 		armGroup.POST("/send_pose", func(c *gin.Context) {
-			var req struct {
-				Interface string `json:"interface"`
-				X         int    `json:"x"` // 已经是0.001mm单位
-				Y         int    `json:"y"`
-				Z         int    `json:"z"`
-				RX        int    `json:"rx"` // 已经是0.001°单位
-				RY        int    `json:"ry"`
-				RZ        int    `json:"rz"`
-				Speed     int    `json:"speed"` // 0-100
-			}
+			var req PoseRequest
 			if err := c.ShouldBindJSON(&req); err != nil {
 				c.JSON(http.StatusBadRequest, gin.H{"error": "invalid request"})
 				return
 			}
-
-			// 验证速度范围
-			if req.Speed < 0 || req.Speed > 100 {
-				c.JSON(http.StatusBadRequest, gin.H{"error": "speed must be 0-100"})
-				return
-			}
-
-			// 发送X-Y (0x152)
-			data152 := intPairToBytes(req.X, req.Y)
-
-			msgxy := CanMessage{
-				Interface: req.Interface,
-				Id:        0x152,
-				Data:      data152,
-			}
-			if err := forwardToCanService(msgxy); err != nil {
-				c.JSON(http.StatusInternalServerError, gin.H{"error": "send X-Y failed", "details": err.Error()})
-				return
-			}
-
-			// 发送Z-RX (0x153)
-			data153 := intPairToBytes(req.Z, req.RX)
-			msgzrx := CanMessage{
-				Interface: req.Interface,
-				Id:        0x153,
-				Data:      data153,
-			}
-			if err := forwardToCanService(msgzrx); err != nil {
-				c.JSON(http.StatusInternalServerError, gin.H{"error": "send Z-RX failed", "details": err.Error()})
-				return
-			}
-
-			// 发送RY-RZ (0x154)
-			data154 := intPairToBytes(req.RY, req.RZ)
-			msgryrz := CanMessage{
-				Interface: req.Interface,
-				Id:        0x154,
-				Data:      data154,
-			}
-			if err := forwardToCanService(msgryrz); err != nil {
-				c.JSON(http.StatusInternalServerError, gin.H{"error": "send RY-RZ failed", "details": err.Error()})
-				return
-			}
-
-			// 发送运动控制指令 (0x151)
-			controlMsg := CanMessage{
-				Interface: req.Interface, // 使用第一个接口发送控制指令
-				Id:        0x151,
-				Data: []byte{
-					0x01,          // 控制模式
-					0x00,          // 点位控制
-					100,           // 速度
-					0, 0, 0, 0, 0, // 后面的字节默认为0
-				},
-			}
-			if err := forwardToCanService(controlMsg); err != nil {
-				c.JSON(http.StatusInternalServerError, gin.H{"error": "send control command failed", "details": err.Error()})
+			fmt.Println("req: ", req)
+			if err := sendPoseCommand(req.X, req.Y, req.Z, req.RX, req.RY, req.RZ, req.Speed, req.Interface); err != nil {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 				return
 			}
 
 			c.JSON(http.StatusOK, gin.H{"status": "pose commands sent"})
-		})
-		// Y序列批量运动接口
-
-		armGroup.POST("/y_sequence", func(c *gin.Context) {
-			var req struct {
-				Sequence  [][]int `json:"sequence"`  //
-				Interface string  `json:"interface"` //
-			}
-			if err := c.ShouldBindJSON(&req); err != nil {
-				c.JSON(http.StatusBadRequest, gin.H{"error": "invalid request"})
-				return
-			}
-			// 固定参数，后续修改为可变参数
-			x := 400000
-			z := 170000
-			rx := 0
-			ry := 80000
-			rz := 0
-			canIface := req.Interface
-			if canIface == "" {
-				canIface = "can2" // 默认can2
-			}
-			fmt.Println("req.Sequence: ", req.Sequence, "interface:", canIface)
-			for _, pair := range req.Sequence {
-				if len(pair) != 2 {
-					c.JSON(http.StatusBadRequest, gin.H{"error": "invalid sequence element"})
-					return
-				}
-				y := pair[0]
-				t := pair[1]
-				if y < -70000 || y > 70000 {
-					c.JSON(http.StatusBadRequest, gin.H{"error": "y out of range"})
-					return
-				}
-				// 1. 发送X-Y
-				data152 := intPairToBytes(x, y)
-				msgxy := CanMessage{
-					Interface: canIface,
-					Id:        0x152,
-					Data:      data152,
-				}
-				if err := forwardToCanService(msgxy); err != nil {
-					c.JSON(http.StatusInternalServerError, gin.H{"error": "send X-Y failed", "details": err.Error()})
-					return
-				}
-
-				// 2. 发送Z-RX
-				data153 := intPairToBytes(z, rx)
-				msgzrx := CanMessage{
-					Interface: canIface,
-					Id:        0x153,
-					Data:      data153,
-				}
-				if err := forwardToCanService(msgzrx); err != nil {
-					c.JSON(http.StatusInternalServerError, gin.H{"error": "send Z-RX failed", "details": err.Error()})
-					return
-				}
-
-				// 3. 发送RY-RZ
-				data154 := intPairToBytes(ry, rz)
-				msgryrz := CanMessage{
-					Interface: canIface,
-					Id:        0x154,
-					Data:      data154,
-				}
-				if err := forwardToCanService(msgryrz); err != nil {
-					c.JSON(http.StatusInternalServerError, gin.H{"error": "send RY-RZ failed", "details": err.Error()})
-					return
-				}
-
-				// 发送运动控制指令 (0x151)
-				controlMsg := CanMessage{
-					Interface: canIface, // 使用指定接口发送控制指令
-					Id:        0x151,
-					Data: []byte{
-						0x01,          // 控制模式
-						0x00,          // 点位控制
-						100,           // 速度
-						0, 0, 0, 0, 0, // 后面的字节默认为0
-					},
-				}
-				if err := forwardToCanService(controlMsg); err != nil {
-					c.JSON(http.StatusInternalServerError, gin.H{"error": "send control command failed", "details": err.Error()})
-					return
-				}
-
-				// 4. 停留
-				if t > 0 {
-					time.Sleep(time.Duration(t) * time.Millisecond)
-				}
-			}
-			c.JSON(http.StatusOK, gin.H{"status": "sequence sent"})
 		})
 
 		// 更新手臂弹琴预设值
@@ -509,6 +434,40 @@ func main() {
 		})
 
 	}
+	// ====================== 钢琴演奏路由组 (/api/piano/*) ======================
+	pianoGroup := r.Group("/api/piano")
+	{
+		pianoGroup.POST("/start", func(c *gin.Context) {
+			var config PianoConfig
+			if err := c.ShouldBindJSON(&config); err != nil {
+				c.JSON(400, gin.H{"error": "invalid request"})
+				return
+			}
+			//fmt.Println("config: ", config)
+			// 启动钢琴演奏，调用函数playPiano
+			playPiano(config)
+			c.JSON(200, gin.H{"status": "success"})
+		})
+		pianoGroup.POST("/stop", func(c *gin.Context) {
+			// 暂停发送，修改全局变量以暂停发送
+			stopPiano = true
+			fmt.Println("stop")
+			c.JSON(200, gin.H{"status": "success"})
+		})
+		//恢复发送，修改全局变量以恢复发送
+		pianoGroup.POST("/resume", func(c *gin.Context) {
+			stopPiano = false
+			fmt.Println("resume")
+			c.JSON(200, gin.H{"status": "success"})
+		})
+		pianoGroup.POST("/kill", func(c *gin.Context) {
+			// 终止发送，修改全局变量以停止发送
+			killPiano = true
+			fmt.Println("kill")
+			c.JSON(200, gin.H{"status": "success"})
+		})
+
+	}
 
 	// 查询CAN设备接口
 	r.GET("/api/can_interfaces", func(c *gin.Context) {
@@ -517,6 +476,186 @@ func main() {
 	fmt.Println("server running on port http://localhost:6130")
 	r.Run(":6130")
 
+}
+
+// 发送位姿指令的函数
+func sendPoseCommand(x, y, z, rx, ry, rz, speed int, canId string) error {
+	// 验证速度范围
+	if speed < 0 || speed > 100 {
+		return fmt.Errorf("speed must be 0-100")
+	}
+
+	// 发送X-Y (0x152)
+	data152 := intPairToBytes(x, y)
+	msgxy := CanMessage{
+		Interface: canId,
+		Id:        0x152,
+		Data:      data152,
+	}
+	if err := forwardToCanService(msgxy); err != nil {
+		return fmt.Errorf("send X-Y failed: %v", err)
+	}
+
+	// 发送Z-RX (0x153)
+	data153 := intPairToBytes(z, rx)
+	msgzrx := CanMessage{
+		Interface: canId,
+		Id:        0x153,
+		Data:      data153,
+	}
+	if err := forwardToCanService(msgzrx); err != nil {
+		return fmt.Errorf("send Z-RX failed: %v", err)
+	}
+
+	// 发送RY-RZ (0x154)
+	data154 := intPairToBytes(ry, rz)
+	msgryrz := CanMessage{
+		Interface: canId,
+		Id:        0x154,
+		Data:      data154,
+	}
+	if err := forwardToCanService(msgryrz); err != nil {
+		return fmt.Errorf("send RY-RZ failed: %v", err)
+	}
+
+	// 发送运动控制指令 (0x151)
+	controlMsg := CanMessage{
+		Interface: canId,
+		Id:        0x151,
+		Data: []byte{
+			0x01,          // 控制模式
+			0x00,          // 点位控制
+			byte(speed),   // 速度
+			0, 0, 0, 0, 0, // 后面的字节默认为0
+		},
+	}
+	if err := forwardToCanService(controlMsg); err != nil {
+		return fmt.Errorf("send control command failed: %v", err)
+	}
+
+	return nil
+}
+
+// index , middle , ring , pinky。分别代表食指，中指，无名指，小指。
+// 手指下压幅度，所有手指共用一个
+var fingerDown = int(255 * 0.6)
+
+// 钢琴演奏函数，设定好预设值，然后开始演奏
+func playPiano(config PianoConfig) {
+	//绑定canid
+	LeftHand = config.Interfaces.LeftHand
+	RightHand = config.Interfaces.RightHand
+	LeftArm = config.Interfaces.LeftArm
+	RightArm = config.Interfaces.RightArm
+
+	fmt.Println("LeftHand: ", LeftHand, "RightHand: ", RightHand, "LeftArm: ", LeftArm, "RightArm: ", RightArm)
+	//将手臂移动到预设位置
+	if config.MusicData.DefaultPosition != (struct {
+		Left  ArmPosition `json:"left"`
+		Right ArmPosition `json:"right"`
+	}{}) {
+		movedefault(config.MusicData.DefaultPosition)
+		fmt.Println("已经移动到预设位置！！马上准备演奏！！")
+	} else {
+		fmt.Println("没有预设位置，请手动调整预设位置")
+	}
+
+	// 发送music的序列
+	playmusic(config.MusicData.Music)
+}
+
+// 移动到预设位置
+func movedefault(default_position struct {
+	Left  ArmPosition `json:"left"`
+	Right ArmPosition `json:"right"`
+}) {
+	//兼容自定义好的预设位置
+	// fmt.Println("default_position: ", default_position)
+	// // 发送左臂的序列,在预设的x,y,z,rx,ry,rz的基础上，加上预设的值
+	// leftArmPianoPreset[0] += default_position.Left.X
+	// leftArmPianoPreset[1] += default_position.Left.Y
+	// leftArmPianoPreset[2] += default_position.Left.Z
+
+	// //发送左臂的序列
+	// sendPoseCommand(leftArmPianoPreset[0], leftArmPianoPreset[1], leftArmPianoPreset[2], leftArmPianoPreset[3], leftArmPianoPreset[4], leftArmPianoPreset[5], 100, LeftArm)
+
+	// // 发送右臂的序列,在预设的x,y,z,rx,ry,rz的基础上，加上预设的值
+	// rightArmPianoPreset[0] += default_position.Right.X
+	// rightArmPianoPreset[1] += default_position.Right.Y
+	// rightArmPianoPreset[2] += default_position.Right.Z
+
+	// //发送右臂的序列
+	// sendPoseCommand(rightArmPianoPreset[0], rightArmPianoPreset[1], rightArmPianoPreset[2], rightArmPianoPreset[3], rightArmPianoPreset[4], rightArmPianoPreset[5], 100, RightArm)
+	//手动调整版本
+	leftArmPianoPreset[2] += default_position.Left.Move * 21
+	rightArmPianoPreset[2] += default_position.Right.Move * 21
+	sendArmPoseCommand(LeftArm, leftArmPianoPreset)
+	sendArmPoseCommand(RightArm, rightArmPianoPreset)
+}
+
+// index , middle , ring , pinky。分别代表食指，中指，无名指，小指。
+var LEFT_HAND_ID uint32 = 0x28
+var RIGHT_HAND_ID uint32 = 0x27
+
+func playmusic(music []MusicNote) {
+	// 初始化当前手指和机械臂位姿
+	copy(L10currentleftFinger, L10FingerPianoPreset)
+	copy(L10currentrightFinger, L10FingerPianoPreset)
+
+	for _, note := range music {
+		var wg sync.WaitGroup
+		wg.Add(2)
+		go func() {
+			handleOneSide(note.Left, &L10currentleftFinger, &leftArmPianoPreset, LeftHand, LeftArm, RIGHT_HAND_ID)
+			wg.Done()
+		}()
+		go func() {
+			handleOneSide(note.Right, &L10currentrightFinger, &rightArmPianoPreset, RightHand, RightArm, RIGHT_HAND_ID)
+			wg.Done()
+		}()
+		wg.Wait()
+		fmt.Println("note: ", note)
+	}
+}
+
+func handleOneSide(action HandAction, fingerState *[]byte, armPose *[]int, handCan string, armCan string, handId uint32) {
+	var wg sync.WaitGroup
+	wg.Add(len(action.Fingers))
+	// 1. 并发执行所有手指动作
+	for i, fingerName := range action.Fingers {
+		go func(idx int, name string, duration float64) {
+			// 按压
+			(*fingerState)[fingerIndexMap[name]] = byte(fingerDown)
+			sendL10FingerCommand(handCan, *fingerState, handId)
+			// 按压持续
+			time.Sleep(time.Duration(duration * float64(time.Second)))
+			// 恢复
+			(*fingerState)[fingerIndexMap[name]] = L10FingerPianoPreset[fingerIndexMap[name]]
+			sendL10FingerCommand(handCan, *fingerState, handId)
+			wg.Done()
+		}(i, fingerName, action.Time[i])
+	}
+	// 2. 等待所有手指动作完成
+	wg.Wait()
+	// 3. 机械臂移动
+	(*armPose)[0] += action.Move.X * 21
+	(*armPose)[1] += action.Move.Y * 21
+	sendArmPoseCommand(armCan, *armPose)
+	// 4. 固定休眠0.2s，模拟机械臂移动时间
+	time.Sleep(150 * time.Millisecond)
+}
+
+func sendArmPoseCommand(armCan string, armPose []int) {
+	sendPoseCommand(armPose[0]*1000, armPose[1]*1000, armPose[2]*1000, armPose[3]*1000, armPose[4]*1000, armPose[5]*1000, 100, armCan)
+}
+
+func sendL10FingerCommand(handCan string, fingerState []byte, handId uint32) {
+	msg := CanMessage{
+		Interface: handCan,
+		Id:        handId, //是left的话，id是0x28，是right的话，id是0x27
+		Data:      append([]byte{0x01}, fingerState...),
+	}
+	forwardToCanService(msg)
 }
 
 // 将两个int32转换为8字节数据 (每个int32占4字节，已经是0.001°单位)
